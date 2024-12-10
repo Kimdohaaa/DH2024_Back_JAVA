@@ -54,7 +54,7 @@ public class Example5 {
 		System.out.println("4. 정수 1을 입력하시오.(홀수)");
 		int i1 = scan.nextInt();
 		
-		boolean bool1 = i1 % 2 == 1 ? true : false;
+		boolean bool1 = (i1 % 2 == 1)? true : false;
 		System.out.println(bool1);
 		
 		/* 
