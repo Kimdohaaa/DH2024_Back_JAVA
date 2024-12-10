@@ -1,6 +1,6 @@
 package day_2;
 
-import java.lang.classfile.attribute.LocalVariableTableAttribute;
+//import java.lang.classfile.attribute.LocalVariableTableAttribute;
 import java.util.Scanner;
 import java.util.zip.Inflater;
 
