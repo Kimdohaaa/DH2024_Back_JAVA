@@ -20,7 +20,7 @@ public class Example1 {
 		
 		System.out.println(age);
 		
-		// 예제 : ing형 변수 year을 2018로 초기화하라
+		// 예제 : ing형 변수 year을 2018로 초기화하시오.
 		int year = 2018;
 		System.out.println(year);
 	}
