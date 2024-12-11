@@ -64,16 +64,7 @@ public class Example3 {
 		
 		System.out.println("점수는 " + Score + "점 학점은 " + grade + "입니다.");
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		// 간단한 조건문이고 선택이 두 가지만 있는 경우 if 문 대신 조건문을 사용하기도 함
 		
 		
 	}
