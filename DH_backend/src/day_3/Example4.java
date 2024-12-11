@@ -91,9 +91,9 @@ public class Example4 {
 		System.out.println("문제 5 : 가위(0) 바위(1) 보(2)를 선택하시오.");
 		int player2 = scan.nextInt();
 		
-		if(player1 == 0 && player2 == 2 || 
-		   player1 == 1 && player2 == 0 ||
-		   player1 == 2 && player2 == 1) {
+		if((player1 == 0 && player2 == 2) || 
+		   (player1 == 1 && player2 == 0) ||
+		   (player1 == 2 && player2 == 1)) {
 			System.out.println("player1 승리");
 		}else if(player1 == player2) {
 			System.out.println("무승부");
@@ -186,13 +186,13 @@ public class Example4 {
 		int sameN = 0 ;
 		
 		if(ball1 == i9_1 || ball1 == i9_2 || ball1 == i9_3) {
-			++sameN;
+			sameN++;
 		}
 		if(ball2 == i9_1 || ball2 == i9_2 || ball2 == i9_3) {
-			++sameN;
+			sameN++;
 		}
 		if(ball3 == i9_1 || ball3 == i9_2 || ball3 == i9_3) {
-			++sameN;
+			sameN++;
 		}
 
 		System.out.println("입력 정수 중 공1~3 과 동일한 번호의 개수는 " + sameN + "입니다.");
