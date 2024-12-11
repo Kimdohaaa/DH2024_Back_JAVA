@@ -198,13 +198,6 @@ public class Example4 {
 		System.out.println("입력 정수 중 공1~3 과 동일한 번호의 개수는 " + sameN + "입니다.");
 		
 		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }
