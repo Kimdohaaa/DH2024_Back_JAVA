@@ -1,5 +1,6 @@
 package day_3;
 
+import java.lang.classfile.attribute.LocalVariableTableAttribute;
 import java.nio.channels.Pipe;
 import java.util.Scanner;
 
@@ -64,9 +65,9 @@ public class 연산자_추가_예제 {
 		System.out.println("문제 7 . 2번 실수 7을 입력하시오.");
 		double d7_2 = scan.nextDouble();
 		
-		double result7 = (d7_1 /d7_2) * 100;
+		double result7 = ( d7_1 / d7_2 ) * 100 ;
 		
-		System.out.println("퍼센트는 %5.1f 입니다.", result7);
+		System.out.printf("퍼센트는 %5.1f 입니다.", result7 );
 		
 	/* 문제8 : 사다리꼴 넓이 구하기[윗변과 밑변 높이를 입력받아 출력하기 , 소수점 첫째 자리까지 출력하시오.
 	       계산식) 사다리꼴 계산식 = > (윗변 + 밑변) * 높이 / 2 */
@@ -79,7 +80,7 @@ public class 연산자_추가_예제 {
 		
 		double result8 = (d8_1 + d8_2) * d8_3 / 2 ;
 		
-		System.out.println("사다리꼴의 넓이는 %5.1f 입니다.", result8);
+		System.out.printf("사다리꼴의 넓이는 %5.1f 입니다.", result8);
 		
 	/* 문제9 : 키를 정수를 입력받아 표준체중 출력하기 , 정수형으로 출력하시오.
 	       계산식) 표준체중 계산식 = > (키 - 100) * 0.9 */
@@ -134,10 +135,7 @@ public class 연산자_추가_예제 {
 	         int y = x-- + 5 + --x;
 	         printf(" x의 값 : %d , y의값 :  %d ", x, y) */
 
-		int x = 10;
-        int y = x-- + 5 + --x; //26
-        
-        System.out.printf("문제 13 . x의 값 : %d , y의 값 : %d" , 11 , 26);
+        System.out.printf("문제 13 . x의 값 : %d , y의 값 : %d" , 8 , 23);
         
 	// 문제14 : 나이를 입력받아 나이가 10세이상이면 학생 , 20세이상이면 성인 , 40세이상이면 중년 으로 출력하기
         
@@ -145,15 +143,50 @@ public class 연산자_추가_예제 {
         int i14 = scan.nextInt();
         
         String result14 = (i14 >= 10 && i14 < 20) ? "학생" : 
-        				  (i14 >= 20 && i14 < 40 ) ? "성인" : "중년";
+        				  (i14 >= 20 && i14 < 40) ? "성인" : 
+        				  (i14 > 40) ? "중년" : "아동" ;
         
         System.out.println("해당 나이는 " + result14 + "입니다.");
         
 	// 문제15 : 국어 , 영어 , 수학 점수를 입력받아 각 변수에 저장하고 총점(소수점 0자리) 출력 , 평균(소수점 2자리 까지) 출력
-
+        
+        System.out.println("문제 15 . 국어점수를 입력하시오.");
+        double d15_1 = scan.nextDouble();
+        System.out.println("문제 15 . 영어점수를 입력하시오.");
+        double d15_2 = scan.nextDouble();
+        System.out.println("문제 15 . 수학점수를 입력하시오.");
+        double d15_3 = scan.nextDouble();
+        
+        int total = (int)d15_1 + (int)d15_2 + (int)d15_3;
+        System.out.printf("해당 점수의 평균은 %d 입니다.", total);
+        
+        double avg = total / 3;
+        System.out.printf("해당 점수의 평균은 %5.2f 입니다.", avg);
+        
 	// 문제16 : 3개의 정수형으로 입력받아 가장 큰수 출력하시오. [ 같은 입력 값을 배제 ]
-
+        
+        System.out.println("문제 16 . 1번 정수 16을 입력하시오.");
+        int i16_1 = scan.nextInt();
+        System.out.println("문제 16 . 3번 정수 16을 입력하시오.");
+        int i16_2 = scan.nextInt();
+        System.out.println("문제 16 . 3번 정수 16을 입력하시오.");
+        int i16_3 = scan.nextInt();
+        
+        int result16 = (i16_1 > i16_2) ? i16_1 : (i16_2 > i16_3) ? i16_2 : i16_3;
+        System.out.println("가장 큰 수는" + result16 + "입니다.");
+        
 	// 문제17 : 아이디[문자열] 와 비밀번호[문자열] 를 입력받아 아이디가 'admin' 이고 비밀번호가 '1234' 와 일치하면 '로그인성공' 아니면 '로그인실패' 출력 하시오
+        
+        System.out.println("문제 17 . 아이디를 입력하시오.");
+        String id = scan.next();
+        System.out.println("문제 17 . 비밀번호를 입력하시오.");
+        int pw = scan.nextInt();
+        
+        String result17 = (id == "admin" && pw == 1234) ? "로그인성공" : "로그인실패";
+        System.out.println(result17);
+        		
+        
+	
 	}
 
 }
