@@ -52,7 +52,7 @@ public class Example3 {
 			System.out.printf("9 * %d = %d \n", i , (9*i));
 		}
 		
-		
+		// 구구단 이중 for 문
 		for(int i = 2 ; i <= 9  ; i++) {
 			for(int j = 1; j <= 9; j++) {
 				System.out.printf("1. %d * %d = %d \n", i , j ,(i*j));
