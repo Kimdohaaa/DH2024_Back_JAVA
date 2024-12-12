@@ -31,9 +31,9 @@ public class Example2 {
 			sum2 += num2;
 		}
 		
-		// while문 무한루프  -> 조건식에 상수 true  wlwjd
+		// while 문 무한루프  -> 조건식에 상수 true 지정
 		/* while (true) {
-			System.out.println("while문 무한 루프");
+			System.out.println("whil e문 무한 루프");
 		} */
 		
 		// for 문 무한 루츠
@@ -71,10 +71,12 @@ public class Example2 {
 			oper2++;
 		}while(oper2 <= 9);
 			
-		// for 문
+		// 3. for 문
 		for(int oper3 = 1; oper3 <= 9; oper3 ++) {
 			System.out.println("2 * " + oper3 + " = " + (oper3 * 2));
 		}
+		
+		
 	}
 
 }
