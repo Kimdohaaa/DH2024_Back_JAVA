@@ -37,30 +37,23 @@ public class 알람시계 {
 		if(alarmH > 0 && alarmM < 0 ) {
 			alarmM += 60;
 			System.out.printf("3. 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
-
 		}else if(alarmH < 0 && alarmM > 0 ) {
 				alarmH += 24;
-				System.out.printf("2 . 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
-
-			
-				
-			
+				System.out.printf("2 . 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);		
 		}else if(alarmH < 0 && alarmM < 0) {
-					alarmH += 24;
-					alarmM += 60;
+				alarmH += 24;
+				alarmM += 60;
 				
-					System.out.printf("1 . 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
-			
-			
+				System.out.printf("1 . 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
 		}else if(alarmT <= 130) {
-			alarmM += 60;
-			System.out.printf("4. 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
-		}
-	
-		else  {
+				alarmM += 60;
+		
+				System.out.printf("4. 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
+		}else  {
 		
 			System.out.printf("5. 알람시간은 %d 시 %d 분 입니다.", alarmH , alarmM);
 		}
+		
 		
 		
 		
