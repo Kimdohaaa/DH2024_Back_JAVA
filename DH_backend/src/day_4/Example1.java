@@ -97,18 +97,6 @@ public class Example1 {
 		}
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 }
 
