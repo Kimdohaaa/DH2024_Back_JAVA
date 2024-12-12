@@ -20,8 +20,7 @@ public class Example3 {
 		
 		// 구구단
 		// 2단
-		for(int i = 1
-				; i <= 9; i++) {
+		for(int i = 1; i <= 9; i++) {
 			System.out.printf("2 * %d = %d \n", i, (2*i));
 		}
 		// 3단
