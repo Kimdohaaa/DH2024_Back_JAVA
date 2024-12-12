@@ -36,7 +36,7 @@ public class Example2 {
 			System.out.println("whil e문 무한 루프");
 		} */
 		
-		// for 문 무한 루츠
+		// for 문 무한 루프
 		/*
 		for( ; ; ){
 			System.out.println("for문 무한 루프");
