@@ -19,7 +19,7 @@ public class Example3 {
 		}
 		
 		// 구구단
-		// 2단
+ 		// 2단
 		for(int i = 1; i <= 9; i++) {
 			System.out.printf("2 * %d = %d \n", i, (2*i));
 		}
@@ -53,12 +53,12 @@ public class Example3 {
 		}
 		
 		
-		
-		
-		
-		
-		
-		
+		for(int i = 2 ; i <= 9  ; i++) {
+			for(int j = 1; j <= 9; j++) {
+				System.out.printf("1. %d * %d = %d \n", i , j ,(i*j));
+			}
+			
+		}
 		
 	}
 
