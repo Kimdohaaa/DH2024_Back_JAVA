@@ -20,13 +20,13 @@ public class Example3 {
 		
 		// 구구단
 		// 2단
-		for(int i = 1; i <= 9; i++) {
+		for(int i = 1
+				; i <= 9; i++) {
 			System.out.printf("2 * %d = %d \n", i, (2*i));
 		}
 		// 3단
 		for(int i = 1; i <= 9 ; i++) {
-			System.out.printf("3 * %d = % d "
-					+ "\n", i , (3*i));
+			System.out.printf("3 * %d = % d \n", i , (3*i));
 		}
 		// 4단
 		for(int i = 1 ; i <= 9; i++) {
@@ -49,7 +49,7 @@ public class Example3 {
 			System.out.printf("8 * %d = %d \n" , i , (8*i));
 		}
 		// 9단
-		for(int i = 1; i <=9 ; i++) {
+		for(int i = 1; i <= 9 ; i++) {
 			System.out.printf("9 * %d = %d \n", i , (9*i));
 		}
 		
