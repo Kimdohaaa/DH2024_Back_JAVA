@@ -50,7 +50,7 @@ public class BoardProgram1 {
 					내용1 = content;
 					작성자1 = writer;
 					// while 문 밖 변수에 입력받은 3개의 문자열 각각 저장
-				}else if(제목2 == null){ // 두번째 게시물이 null 이면 두번째 게시물 변수에 대입
+				}else if(제목2 == null){ // 다수조건에 따른 단일 출력 / 두번째 게시물이 null 이면 두번째 게시물 변수에 대입
 					// 변수값 수정
 					제목2 = title;
 					내용2 = content;
@@ -70,13 +70,15 @@ public class BoardProgram1 {
 
 			}else if(선택메뉴 == 2) {
 				System.out.println(">>2.출력을 선택했습니다.");
-				if(제목1 != null) {
+				if(제목1 != null) { // 다수 조건에 따른 다수 실행
 					// 변수값 호출
 					System.out.print("> 제목 : " + 제목1 + "> 내용 : " + 내용1 + "> 작성자 : " + 작성자1);
-				}else if(제목2 != null) {
+				}
+				if(제목2 != null) {
 					// 변수값 호출
 					System.out.print("> 제목 : " + 제목2 + "> 내용 : " + 내용2 + "> 작성자 : " + 작성자2);
-				}else if(제목3 != null) {
+				}
+				if(제목3 != null) {
 					// 변수값 호출
 					System.out.print("> 제목 : " + 제목3 + "> 내용 : " + 내용3 + "> 작성자 : " + 작성자3);
 				}
