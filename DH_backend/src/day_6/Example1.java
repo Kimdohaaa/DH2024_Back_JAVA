@@ -48,14 +48,15 @@ public class Example1 {
 				}else {
 					System.out.println("대기자리가 없습니다.");
 				}
+
 			}else if(선택 == 2) {
 				System.out.println("대기번호를 선택하셨습니다.");
 				if(전화번호1 != null) {
-					System.out.println("전화번호 : " + 전화번호1 + "인원수 : " + 인원수1 + "의 대기번호는 " + ++대기번호 );
+					System.out.println(전화번호1 + "님의 대기번호 : " + ++대기번호 );
 				}else if(전화번호2 != null) {
-					System.out.println("전화번호 : " + 전화번호2 + "인원수 : " + 인원수2 + "의 대기번호는 " + ++대기번호  );
+					System.out.println(전화번호2 + "님의 대기번호 : " + ++대기번호  );
 				}else if(전화번호3 != null) {
-					System.out.println("전화번호 : " + 전화번호3 + "인원수 : " + 인원수3 + "의 대기번호는 " + ++대기번호  );
+					System.out.println(전화번호3 + " 님의 대기번호 : " + ++대기번호  );
 				}
 			}
 		}
