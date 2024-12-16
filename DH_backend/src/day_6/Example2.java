@@ -59,7 +59,7 @@ public class Example2 {
 				}
 			}else if(선택 == 4) {
 				int total = (콜라 * 콜라가격) + (사이다 * 사이다가격) + (환타 * 환타가격);
-				System.out.printf(" 콜라 : %d 개 / 사이다 : %d / 환타 : %d  총금액은 %d 입니다.", 콜라바구니 , 사이다바구니, 환타바구니 , total);
+				System.out.printf(" 콜라 : %d 개 / 사이다 : %d / 환타 : %d  총금액은 %d 원 입니다. \n", 콜라바구니 , 사이다바구니, 환타바구니 , total);
 			}
 
 		}
