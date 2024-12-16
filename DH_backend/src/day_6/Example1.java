@@ -12,28 +12,28 @@ public class Example1 {
 	*/
 	public static void main(String[] args) {
 		String 전화번호1 = null;
-		String 인원수1 = null;
+		int 인원수1 = 0;
 		String 전화번호2 = null;
-		String 인원수2 = null;
+		int 인원수2 = 0;
 		String 전화번호3 = null;
-		String 인원수3 = null;
+		int 인원수3 = 0;
 		
 		int 대기번호 = 0;
 		
-		while(true) {
+		while(true) { // while 문 무한루프
 			System.out.println("===대기명단===");
 			System.out.println(">> 1. 대기등록 2. 대기번호");
 			
 			Scanner scan = new Scanner(System.in);
 			int 선택 = scan.nextInt();
-			if(선택 == 1) {
-				System.out.println("대기등록을 선택하셨습니다.");
+			if(선택 == 1) { // 논리 연산에 따른 제어(조건문 사용)
+				System.out.println(">> 대기등록을 선택하셨습니다.");
 				
-				System.out.println("전화번호를 입력하시오.");
+				System.out.println("> 전화번호를 입력하시오.");
 				String tel = scan.next();
 				
-				System.out.println("인원수를 입력하시오.");
-				String people = scan.next();
+				System.out.println("> 인원수를 입력하시오.");
+				int people = scan.nextInt();
 				
 				인원수1 = people;
 				if(전화번호1 == null) {
@@ -46,17 +46,20 @@ public class Example1 {
 					전화번호3 = tel;
 					인원수3 = people;
 				}else {
-					System.out.println("대기자리가 없습니다.");
+					System.out.println("** 대기자리가 없습니다. **");
 				}
 
 			}else if(선택 == 2) {
-				System.out.println("대기번호를 선택하셨습니다.");
+				
+				System.out.println(">> 대기번호를 선택하셨습니다.");
+				
 				if(전화번호1 != null) {
 					System.out.println(전화번호1 + "님의 대기번호 : " + ++대기번호 );
 				}else if(전화번호2 != null) {
 					System.out.println(전화번호2 + "님의 대기번호 : " + ++대기번호  );
 				}else if(전화번호3 != null) {
 					System.out.println(전화번호3 + " 님의 대기번호 : " + ++대기번호  );
+					대기번호 = 0;
 				}
 			}
 		}
