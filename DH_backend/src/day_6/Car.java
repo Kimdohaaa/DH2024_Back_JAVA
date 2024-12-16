@@ -2,5 +2,5 @@ package day_6;
 
 public class Car {
 	int 차량번호;
-	int 차량주;
+	String 차량주;
 }
