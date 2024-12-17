@@ -32,7 +32,7 @@ public class Waiting {
 		while(true) {
 			Scanner scan = new Scanner(System.in);
 			
-			System.out.println("1. 대기명단 2. 대기번호");
+			System.out.println("1. 대기등록 2. 대기명단");
 			int choose = scan.nextInt();
 			
 			if(choose == 1) {
@@ -55,7 +55,7 @@ public class Waiting {
 					System.out.println("대기자리가 없습니다.");
 				}
 			}else if(choose == 2) {
-				System.out.println("대기번호를 선택하였습니다.");
+				System.out.println("대기명단을 선택하였습니다.");
 				if(wait1.tel != null) {
 					System.out.println(wait1.tel + "님의 대기번호 : " + ++watingNo );
 				}
