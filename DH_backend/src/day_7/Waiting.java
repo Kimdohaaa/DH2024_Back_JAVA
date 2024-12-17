@@ -45,15 +45,18 @@ public class Waiting {
 				System.out.println(">> 인원수 입력");
 				int people = scan.nextInt();
 				
+				Waiting waiting = new Waiting(); // 대기명단 객체 생성
+				waiting.tel = tel ; 
+				waiting.people = people; // 대기명단 객체에 입력받는 값 대입
+				// 대기명단 객체를 생성해서 if 문 내 중복 코드를 줄여줌
+				
+				
 				if(wait1.tel == null) {
-					wait1.tel = tel;
-					wait1.people = people;
+					waiting = wait1;
 				}else if(wait2.tel == null) {
-					wait2.tel = tel;
-					wait2.people = people;
+					waiting = wait2;
 				}else if(wait3.tel == null) {
-					wait3.tel = tel;
-					wait3.people = people;
+					waiting = wait3;
 				}else {
 					System.out.println("대기자리가 없습니다.");
 				}
