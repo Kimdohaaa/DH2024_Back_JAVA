@@ -10,8 +10,10 @@ import java.util.Scanner;
 	- 대기명단 1개당 전화번호 / 인원수 저장소 2개 필요
 */
 public class Waiting {
+	
 	String tel;
 	int people;
+	
 	public static void main(String[] args) {
 		
 		Waiting wait1 = new Waiting();
