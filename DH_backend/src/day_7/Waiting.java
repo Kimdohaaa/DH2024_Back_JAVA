@@ -36,6 +36,7 @@ public class Waiting {
 			int choose = scan.nextInt();
 			
 			if(choose == 1) {
+				
 				System.out.println("대기등록을 선택하였습니다.");
 				System.out.println(">> 전화번호 입력");
 				String tel = scan.next();
@@ -54,8 +55,10 @@ public class Waiting {
 				}else {
 					System.out.println("대기자리가 없습니다.");
 				}
+				
 			}else if(choose == 2) {
 				System.out.println("대기명단을 선택하였습니다.");
+				
 				if(wait1.tel != null) {
 					System.out.println(wait1.tel + "님의 대기번호 : " + ++waitingNo );
 				}
@@ -65,6 +68,7 @@ public class Waiting {
 				if(wait3.tel != null) {
 					System.out.println(wait3.tel + "님의 대기번호 : " + ++waitingNo );
 				}
+				
 			}
 			
 		}
