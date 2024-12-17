@@ -66,21 +66,21 @@ public class Example3 {
 				
 				if(p1.id != null) {
 					if(p1.id.equals(logId) && p1.pw.equals(logPw)) {
-						System.out.print( p1.nickname +" 님 로그인 성공");
+						System.out.print( p1.nickname +" 님 로그인 성공 \n");
 					}else {
 						System.out.println("회원정보가 없습니다.");
 					}
 				}
 				if(p2.id != null) {
 					if(p2.id.equals(logId) && p2.pw.equals(logPw)) {
-						System.out.print( p2.nickname +" 님 로그인 성공");
+						System.out.print( p2.nickname +" 님 로그인 성공 \n");
 					}else {
 						System.out.println("회원정보가 없습니다.");
 					}
 				}
 				if(p3.id != null) {
 					if(p3.id.equals(logId) && p3.pw.equals(logPw)) {
-						System.out.print( p3.nickname +" 님 로그인 성공");
+						System.out.print( p3.nickname +" 님 로그인 성공 \n");
 					}else {
 						System.out.println("회원정보가 없습니다.");
 					}
