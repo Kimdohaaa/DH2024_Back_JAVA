@@ -16,6 +16,7 @@ import java.util.Scanner;
 		- 유효성 검사 : 재고가 부족하면 '재고가 부족합니다.'라고 출력하시오.
 */
 public class Kio {
+	// String name; // 식별 
 	int 재고;
 	int 바구니;
 	int 가격;
