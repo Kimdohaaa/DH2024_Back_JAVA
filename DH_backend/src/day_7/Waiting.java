@@ -27,7 +27,7 @@ public class Waiting {
 		wait3.tel = null;
 		wait3.people = 0;
 		
-		int watingNo = 0;
+		int waitingNo = 0;
 		
 		while(true) {
 			Scanner scan = new Scanner(System.in);
@@ -57,13 +57,13 @@ public class Waiting {
 			}else if(choose == 2) {
 				System.out.println("대기명단을 선택하였습니다.");
 				if(wait1.tel != null) {
-					System.out.println(wait1.tel + "님의 대기번호 : " + ++watingNo );
+					System.out.println(wait1.tel + "님의 대기번호 : " + ++waitingNo );
 				}
 				if(wait2.tel != null) {
-					System.out.println(wait2.tel + "님의 대기번호 : " + ++watingNo );
+					System.out.println(wait2.tel + "님의 대기번호 : " + ++waitingNo );
 				}
 				if(wait3.tel != null) {
-					System.out.println(wait3.tel + "님의 대기번호 : " + ++watingNo );
+					System.out.println(wait3.tel + "님의 대기번호 : " + ++waitingNo );
 				}
 			}
 			
