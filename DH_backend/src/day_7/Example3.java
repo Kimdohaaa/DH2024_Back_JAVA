@@ -27,21 +27,6 @@ public class Example3 {
 		Example3 p2 = new Example3();
 		Example3 p3 = new Example3();
 		
-		
-		p1.id = null;
-		p1.pw = null;
-		p1.nickname = null;
-		
-
-		p2.id = null;
-		p2.pw = null;
-		p2.nickname = null;
-		
-	
-		p3.id = null;
-		p3.pw = null;
-		p3.nickname = null;
-		
 		while(true) {
 			Scanner scan1 = new Scanner(System.in);
 			
