@@ -50,7 +50,7 @@ public class Example1 {
 				for(int j = 0; j <= waitingArr.length -1; j++) {
 					if(waitingArr[j] != null) {
 						Example1 waiting = waitingArr[j];
-						System.out.println(waiting.tel + "님의 대기번호 : " + ++waitingNo );
+						System.out.println(waiting.tel + "님");
 					}
 				}
 			}
