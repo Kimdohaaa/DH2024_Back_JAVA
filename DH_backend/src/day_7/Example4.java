@@ -22,7 +22,7 @@ public class Example4 {
 
 		// 3. 배열 호출
 		int[] num = new int[] {1,2,3,4,5,6,7,8,9,10};
-		System.out.println(num);  
+		System.out.println(num);  // 배열의 가상메모리위치(=주소) 값 출력
 		System.out.println(Arrays.toString(num));	// 배열의 모든 값 출력
 		System.out.println(num[0]); // 배열의 특정 index 값 출력
 		System.out.println(num[3]); // 배열의 특정 index 값 출력
