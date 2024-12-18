@@ -18,8 +18,6 @@ public class Example1 {
 
 		Example1[] waitingArr = new Example1[100];
 		
-		int waitingNo = 0;
-		
 		while(true) {
 			Scanner scan = new Scanner(System.in);
 			
