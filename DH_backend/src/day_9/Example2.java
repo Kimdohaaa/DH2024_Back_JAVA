@@ -14,7 +14,10 @@ import java.util.Scanner;
 */
 public class Example2 {
 	public static void main(String[] args) {
+		// JoinService 의 메소드를 사용할 수 있는 객체 생성
 		JoinService js = new JoinService();
+		
+		// Join 클래스의 멤버변수를 사용할 수 있는 배열 생성
 		Join[] joinArr = new Join[100];
 		
 		while(true) {
