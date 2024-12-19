@@ -35,7 +35,7 @@ public class WaitingService {
 		
 		for(int i = 0; i <= waitingArr.length -1; i++) {
 			if(waitingArr[i] != null) {	// 배열 WaitingArr 의 index 에 값이 저장되어 있다면
-				Waiting wait = waitingArr[i];	// Waiting의 객체를 사용할 수 잇는 wait 객체를 생성한 후 배열 내 해당 index 에 들어잇는 값을 대입
+				Waiting wait = waitingArr[i];	// Waiting 의 객체를 사용할 수 잇는 wait 객체를 생성한 후 배열 내 해당 index 에 들어잇는 값을 대입
 				System.out.println(wait.tel + "님");
 			}
 		}
