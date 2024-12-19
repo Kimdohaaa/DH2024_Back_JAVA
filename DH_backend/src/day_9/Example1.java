@@ -13,8 +13,10 @@ public class Example1 {
 
 	public static void main(String[] args) {
 		
+		// WaitingService 의 메소드를 사용할 수 있는 객체 생성
 		WaitingService ws = new WaitingService();
 		
+		// Waiting 의 객체를 저장할 수 있는 배열 객체 생성
 		Waiting[] waitingArr = new Waiting[100];
 		
 		while(true) {
@@ -24,9 +26,10 @@ public class Example1 {
 			int choose = scan.nextInt();
 			
 			if(choose == 1) {
-				ws.inFunc(scan , waitingArr);
+				ws.inFunc(scan , waitingArr); // 입력값을 변수에 저장할 수 있는 scan 을 WaitingService의 메소드에게 매개변수로 전달
+											  // 변수에 저장된 입력값을 Waiting[]의 index 에 저장할 수 있도록 WaitingService의 메소드에게 매개변수로 전달
 			}else if(choose == 2) {
-				ws.outFunc(waitingArr);				
+				ws.outFunc(waitingArr);		  // WaitingService 의 메소드 inFunc()에서 Waiting[]에 저장한 index 의 값을 출력하기 위해 Waiting[]을 outFunc()에게 매개변수로 전달		
 			}
 		}
 
