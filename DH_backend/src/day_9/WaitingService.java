@@ -5,6 +5,11 @@ import java.util.Scanner;
 import day_8.Example1;
 
 public class WaitingService {
+// 메소드 설계
+	// 1. 실행조건
+	// 2. 매개변수
+	// 3. 반환값
+	
 	void inFunc(Scanner scan, Waiting[] waitingArr) {
 		System.out.println(">> 대기 등록 선택");
 		
