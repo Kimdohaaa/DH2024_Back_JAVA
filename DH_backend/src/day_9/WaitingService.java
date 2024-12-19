@@ -8,9 +8,13 @@ public class WaitingService {
 // 메소드 설계
 	// 1. 실행조건
 	// 2. 매개변수
-	// 3. 반환값
+	// 3. 반환값 
 	
 	void inFunc(Scanner scan, Waiting[] waitingArr) {
+		// 1. 실행조건 : choose 에 값 1이 대입되었을때
+		// 2. 매개변수 : 입력객체 / 명단 배열
+		// 3. 반환값 : X
+	
 		System.out.println(">> 대기 등록 선택");
 		
 		// Example1에서 매개변수로 전달 받은 scan 을 통해 입력값을 변수에 대입
@@ -36,6 +40,10 @@ public class WaitingService {
 		
 	}
 	void outFunc(Waiting[] waitingArr) {
+		// 1. 실행조건 : choose 에 값 2가 대입 되었을 때
+		// 2. 매개변수 : 명단 배열
+		// 3. 반환값 : X
+		
 		System.out.println(">> 대기 명단 선택");
 		
 		for(int i = 0; i <= waitingArr.length -1; i++) {
