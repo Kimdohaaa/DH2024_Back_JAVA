@@ -45,14 +45,17 @@ public class JoinService {
 		l1.ID = id;
 		l1.password = password;
 		
+		
 		for(int i = 0; i <= joinArr.length -1; i++) {
 			if(joinArr[i].ID.equals(l1.ID) && joinArr[i].password.equals(l1.password)) { // Join 클래스의 회원가입 객체의 값 == Join 클래스의 로그인 객체의 값
-				System.out.println(">> 로그인 성공");
-				System.out.println(joinArr[i].nickName + " 님 로그인 되었습니다.");	// Join 클래스 회원가입 객체의 닉네임 출력
-				break;
-			}else {	// Join 클래스의 회원가입 객체의 값 != Join 클래스의 로그인 객체의 값
-				System.out.println(">> 로그인 실패");
-				break;
+				if(joinArr[i] != null) {
+					System.out.println(joinArr[i].nickName + " 님 로그인 되었습니다.");	// Join 클래스 회원가입 객체의 닉네임 출력
+					break;
+				}
+			}else{	// Join 클래스의 회원가입 객체의 값 != Join 클래스의 로그인 객체의 값
+				if(joinArr[i] == null) {
+					System.out.println(">> 로그인 실패");
+				}
 			}
 		}
 	}
