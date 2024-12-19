@@ -2,6 +2,7 @@ package day_9;
 
 import java.util.Scanner;
 
+// 회원 객체가 사용하는 메소드 설계
 public class JoinService {
 	void joinFunc(Scanner scan, Join[] joinArr) {
 		System.out.println(">> 회원가입을 선택하였습니다.");
@@ -22,12 +23,20 @@ public class JoinService {
 		p1.password = password;
 		p1.nickName = nickName;
 		
+		// 회원가입 상태를 나타낼 객체 생성 -> 배열 순회 for 문 내에 유효성 검사까지 포함하면 else 에 break 를 걸 수 없어 else 가 계속 반복되기때문
+		Boolean joinState = false;
 		// joinArr[] 내 index 에 객체 저장
 		for(int i = 0; i <= joinArr.length -1; i++) {
 			if(joinArr[i] == null) {
 				joinArr[i] = p1;
+				joinState = true;
 				break;
 			}
+		}
+		if(joinState == true) {
+			System.out.println("회원가입 성공");
+		}else {
+			System.out.println("회원가입 실패");
 		}
 	}
 	void logInFunc(Scanner scan, Join[] joinArr) {
