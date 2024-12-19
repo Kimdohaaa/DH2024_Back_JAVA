@@ -17,7 +17,7 @@ public class WaitingService {
 		// Waiting 의 객체를 사용할 수 있도록 Waiting 클래스의 객체 생성
 		Waiting people = new Waiting();
 		
-		// 생성한 Waiting 객체에 입력값 대입
+		// 생성한 Waiting 객체 내 멤버변수에 입력값 대입
 		people.tel = tel;
 		people.count = count;
 		
