@@ -52,6 +52,7 @@ public class JoinService {
 				break;
 			}else {	// Join 클래스의 회원가입 객체의 값 != Join 클래스의 로그인 객체의 값
 				System.out.println(">> 로그인 실패");
+				break;
 			}
 		}
 	}
