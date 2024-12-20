@@ -38,7 +38,7 @@ public class BoardDto{
 		this.writer = writer;
 	}
 	
-	// toString() 메소드 : 기본 출력(주소 / 참조값) -> 원하는 값 으로 바꿔주는 메소드
+	// toString() 메소드 : 기본 출력(주소 / 참조값) -> 원하는 값으로 오버라이딩(재정의)하는 메소드
 	@Override
 	public String toString() {
 		return "BoardDto [title=" + title + ", content=" + content + ", writer=" + writer + "]";
