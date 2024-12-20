@@ -11,11 +11,7 @@ public class Join {
 		this.password = password;
 		this.nickName = nickName;
 	}
-	Join(String id, String password){
-		this.id = id;
-		this.password = password;
-		
-	}
+	
 	public String getId() {
 		return id;
 	}
