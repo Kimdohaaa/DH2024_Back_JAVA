@@ -3,18 +3,15 @@ package day_10;
 import java.util.Scanner;
 
 public class JoinService {
-	void joinFunc(Scanner scan, Join[] joinArr, Join p) {
+	void joinFunc(Scanner scan, Join[] joinArr) {
 		System.out.println(">> 회원가입 선택");
 		
 		System.out.println("> 아이디 입력");
 		String id = scan.next();
-		p.setId(id);
 		System.out.println("> 비밀번호 입력");
 		String password = scan.next();
-		p.setPassword(password);
 		System.out.println("> 닉네임 입력");
 		String nickName = scan.next();
-		p.setNickName(nickName);
 		
 		Join p1 = new Join(id,password,nickName);
 		System.out.println(p1);
@@ -34,15 +31,13 @@ public class JoinService {
 		}
 	}
 	
-	void logInFunc(Scanner scan, Join[] joinArr, Join l) {
+	void logInFunc(Scanner scan, Join[] joinArr) {
 		System.out.println(">> 로그인 선택");
 		
 		System.out.println("> 아이디 입력");
 		String id = scan.next();
-		l.setId(id);
 		System.out.println("> 비밀번호 입력");
 		String password = scan.next();
-		l.setPassword(password);
 		
 		Join l1 = new Join(id, password);
 		
