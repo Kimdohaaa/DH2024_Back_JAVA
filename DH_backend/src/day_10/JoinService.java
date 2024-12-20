@@ -39,22 +39,26 @@ public class JoinService {
 		System.out.println("> 비밀번호 입력");
 		String password = scan.next();
 		
-		Join l1 = new Join(id, password);
 		
 		
-		Boolean logInState = false;
+		Boolean joinState = false;
+		
 		for(int i = 0; i <= joinArr.length -1; i++) {
-			if(joinArr[i] != null && joinArr[i].getId().equals(l1.getId()) && joinArr[i].getPassword().equals(l1.getPassword())) {
+			if(joinArr[i] != null && joinArr[i].getId().equals(id) && joinArr[i].getPassword().equals(password)) {
+					joinState = true;
+					break;
+				}
+			}
+			
+			if(joinState == true) {
 				System.out.println(">> 로그인 성공");
-				logInState = true;
-				break;
-			}
-			if(logInState == false) {
+			}else {
+				
 				System.out.println(">> 로그인 실패");
-				break;
 			}
+			
 			
 		}
 		
-	}
+	
 }
