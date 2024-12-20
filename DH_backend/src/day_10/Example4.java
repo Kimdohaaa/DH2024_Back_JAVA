@@ -21,8 +21,6 @@ public class Example4 {
 
 	public static void main(String[] args) {
 		Join[] joinArr = new Join[100];
-		Join p1 = new Join();
-		Join l1 = new Join();
 		
 		JoinService js = new JoinService();
 		
@@ -33,9 +31,9 @@ public class Example4 {
 			int choose = scan.nextInt();
 				
 			if(choose == 1) {
-				js.joinFunc(scan, joinArr, p1);
+				js.joinFunc(scan, joinArr);
 			}else if(choose == 2) {
-				js.logInFunc(scan, joinArr, l1);
+				js.logInFunc(scan, joinArr);
 			}
 		}
 	}
