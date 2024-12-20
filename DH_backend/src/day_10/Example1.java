@@ -35,6 +35,7 @@ public class Example1 {
 			sub1.scorePoint = 78;
 		s3.math = sub2;
 		
+		
 		System.out.println(s3);
 		
 	}
