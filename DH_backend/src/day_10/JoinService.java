@@ -16,7 +16,6 @@ public class JoinService {
 		
 		// Join 클래스 생성자에 입력값 전달
 		Join p1 = new Join(id,password,nickName);
-		// ? 생성자를 초기화하는 방식으로 값을 전달하면 멤버변수의 private 여부 상관 X ??
 		//System.out.println(p1);
 
 		
