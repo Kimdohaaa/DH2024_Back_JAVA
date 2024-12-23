@@ -35,6 +35,7 @@ public class BoardService { // BA s
 			System.out.println(">> 등록 실패");
 		} // if e		
 	} // BA e
+	
 	// 게시물 출력 메소드
 	public void Boardprint(BoardDto[] boardArr) { // BP s
 		System.out.println(">> 출력을 선택하셨습니다.");
