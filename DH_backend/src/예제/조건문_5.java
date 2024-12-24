@@ -29,7 +29,12 @@ public class 조건문_5 {
 			int cookingM = cooking % 60;
 			int cookingH = cooking / 60;
 			H += cookingH;
-			System.out.println(">> 완료 시간 : " + H + " 시" + cookingM + " 분 입니다.");
+			if(H >= 24) {
+				H -= 23;
+				System.out.println(">> 완료 시간 : " + H + " 시" + cookingM + " 분 입니다.");
+			}else {
+				System.out.println(">> 완료 시간 : " + H + " 시" + cookingM + " 분 입니다.");
+			}
 		}else {
 			System.out.println(">> 완료 시간 : " + H + " 시" + cooking + " 분 입니다." );
 		}
