@@ -28,7 +28,7 @@ public class Example1 {
 					int choose2 = scan.nextInt();
 					
 					if(choose2 == 1) {
-						bs.boardAdd(scan, boardArr, choose2);
+						bs.boardAdd(scan, boardArr);
 					}else if(choose2 == 2) {
 						bs.boardPrint(scan, boardArr, memberArr);
 					}
