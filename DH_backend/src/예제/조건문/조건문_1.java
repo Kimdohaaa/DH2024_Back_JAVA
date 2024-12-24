@@ -1,4 +1,4 @@
-package 예제;
+package 예제.조건문;
 
 import java.util.Scanner;
 
