@@ -34,5 +34,4 @@ public class MemberDto {
 		this.name = name;
 	}
 	
-	
 }
