@@ -25,7 +25,8 @@ public class Example5 {
 		ManagerDto[] managerArr = new ManagerDto[100];
 		MemberDto[] memberArr = new MemberDto[100];
 		BookDto[] bookArr = new BookDto[100];
-		RentalArr[] rentalArr = new RentalArr[100];
+		MemberDto rentalList = new MemberDto();
+		
 		
 		ManagerService managerS = new ManagerService();
 		MemberService memberS = new MemberService();
@@ -81,11 +82,11 @@ public class Example5 {
 							int choose3 = scan.nextInt();
 							
 							if(choose3 == 1) {
-								memberS.rental(scan, bookArr, memberArr,rentalArr);
+								memberS.rental(scan, bookArr, memberArr,rentalList.getRentalArr());
 							}else if (choose3 == 2) {
-								memberS.deleteRental(scan, bookArr, rentalArr);
+								memberS.deleteRental(scan, bookArr, rentalList.getRentalArr());
 							}else if(choose3 == 3 ) {
-								memberS.rentalList(rentalArr);
+								memberS.rentalList(rentalList.getRentalArr());
 							}else if(choose3 == 4) {
 								mi = null;
 								System.out.println(">> 로그아웃 성공");
