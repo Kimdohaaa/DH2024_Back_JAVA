@@ -46,19 +46,32 @@ public class WaitingView {
 		System.out.println("> 인원수 : ");
 		int count = scan.nextInt();
 		
-		// 객체화 -> WaitingDto 생성자를 통해 초기화
+		// 객체화 -> WaitingDto 생성자를 통해 입력값으로 초기화
 		WaitingDto waitingDto = new WaitingDto(tel,count);
 		
-		
+		// 1- WaitingController 에게 저장할 객체(WaitingDto) 전달
+		// 2- WaitingController 에게 결과 응답 받기(WaitingController -> waiting() 메소드에서 waitingDto 정보 처리 ->  return 값 반환
+		// 3- WaitingController 에서 반환된 값을 result 변수에 대입
 		boolean result = WaitingController.getInstance().waiting(waitingDto);
 		
+		
+		// 유효성 검사
+		if(result = true) {
+			System.out.println(">> 대기 등록 완료");
+		}else {
+			System.out.println(">> 대기 등록 실패");
+		}
+		
 	}
+	
 	// 3. 대기 목록 메소드
 	public void waitingList() { // 35 행
 		System.out.println(">> 대기 목록");
 		
+		// WaitingController -> WaitingList() 메소드의 반환값을 받아 result 변수에 대입
 		WaitingDto[] result = WaitingController.getInstance().waitingList();
 		
+		// 출력
 		for(int i = 0; i < result.length; i++) {
 			WaitingDto waiting = result[i];
 			if(waiting != null) {
