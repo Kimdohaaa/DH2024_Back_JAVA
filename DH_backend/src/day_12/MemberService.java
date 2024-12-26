@@ -48,27 +48,72 @@ public class MemberService {
 		return null;
 	}
 	
-	public void rental(Scanner scan, BookDto[] bookArr, MemberDto[] memberArr) {
+	public void rental(Scanner scan, BookDto[] bookArr, MemberDto[] memberArr, RentalArr[] rentalArr) {
 		System.out.println(">> 도서대여를 선택하셨습니다.");
 		
 		System.out.println("> 대여도서 이름 :");
 		String title = scan.next();
 		
-		MemberDto rental = new MemberDto();
-		
-		String index = rental.rental(null);
-		
+		Boolean rentalState = false;
 		for(int i = 0; i < bookArr.length; i++) {
-			for(int j = 0; j < memberArr.length; j++) {
-				if(bookArr[i] != null && bookArr[i].getTitle().equals(title) && bookArr[i].getCount() > 0) {
-					index = bookArr[i].getTitle();
-					bookArr[i].setCount(bookArr[i].getCount()-1);
-					System.out.println(">> 도서대여완료");
-					break;
-				}
+			for(int j = 0; j < rentalArr.length ; j++) {
 				
+				if(bookArr[i] != null && bookArr[i].getTitle().equals(title) && bookArr[i].getCount() > 0) {
+					bookArr[i].setCount(bookArr[i].getCount()-1);
+					if(rentalArr[j] == null) {
+						RentalArr rental = new RentalArr(title); 
+						rentalState = true;
+						System.out.println(">> 도서대여완료");
+						
+						System.out.println(bookArr[i].getCount());
+						break;
+					}
+				}	
 			}	
 		}
 		
+		if(rentalState == false) {
+			System.out.println(">> 도서대여실패");
+		}
+				
+	}
+	
+	public void deleteRental(Scanner scan, BookDto[] bookArr, RentalArr[] rentalArr) {
+		System.out.println(">> 도서반납을 선택하셨습니다.");
+		
+		System.out.println("> 반납도서 이름 : ");
+		String title = scan.next();
+		
+		Boolean deleteState = false;
+		//////
+		for(int i = 0; i < rentalArr.length; i++) {
+			for(int j = 0; j < bookArr.length; j++) {
+				if(rentalArr[i] != null && rentalArr[i].getRentalArr() == title) {
+					rentalArr[i].setRentalArr(null);
+					bookArr[j].setCount(bookArr[i].getCount() + 1);
+					deleteState = true;
+					System.out.println(">> 도서반납완료");
+					System.out.println(bookArr[i].getCount());
+					System.out.printf(" 도서제목 : %s", rentalArr[i].getRentalArr());
+					break;
+				}
+			}
+		}
+		
+		if(deleteState == false) {
+			System.out.println(">> 도서반납실패");
+		}
+		
+	}
+	
+	public void rentalList(RentalArr[] rentalArr) {
+		System.out.println(">> 도서현황을 선택하셨습니다.");
+		
+		for(int i =0; i < rentalArr.length; i++) {
+			if(rentalArr[i].getRentalArr() !=  null) {
+				System.out.printf(" 도서제목 : %s", rentalArr[i].getRentalArr());
+				break;
+			}
+		}
 	}
 }
