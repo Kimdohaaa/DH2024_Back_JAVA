@@ -1,0 +1,64 @@
+[데이터베이스]
+- 데이터 : 자료 
+- 베이스 : 모임 / 집합
+- 정의 : 자료들의 집합 
+- 종류
+	1. 관계형 DB -> 데이터를 테이블 형식으로 관리 * 실무에서 가장 많이 사용
+	2. NOSQL DB -> 데이터를 객체 형식으로 관리
+	3. 트리형 DB
+	4. 네트워크 DB
+	
+[관계형 DB]
+- 정의 
+	1. 행과 열로 이루어진 데이터의 집합 -> 테이블
+	2. 고유값 / 식별 값을 참조하여 다른 테이블 간의 종속되는 관계를 표현 
+- 관계형 DB 를 제공하는 소프트우에
+	1. Oracle
+	2. MySQL
+	3. MariaDB 
+- 필수 용어
+	1. DB : DataBase	
+	2. DBA : DB 관리자
+	3. DBMS : DB 관리 시스템 -> Oracle / MySQL / MariaDB 등
+	4. DB SERVER : DB 가 설치된 PC
+		-> SERVER : 자료를 제공 하는	
+		-> CLIENT : 자료를 제공 받는
+	5. SQL : DB 를 조작하는 사용하는 언어 -> 질의어
+	
+[SQL]
+- 정의 : DB 에서 데이터를 추출하고 추출한 데이터를 조작하는데 사용하는 언어
+
+[환경설정]
+1. MySQL SERVER 설치 -> JAVA 의 JDK 
+	1) https://dev.mysql.com/downloads/
+	2) [MySQL Installer for Windows] 클릭
+	3) Select Version : 8.x | Select Operating System : Window 선택
+	4) Window (x86, 32-bit), MSI Installer 8.0.40 306.5M [Download] 클릭
+	5) 하단에 [No thanks, just start my download.] 클릭
+	6) 다운로드 실행
+	
+2. MySQL Workbench 설치 -> JAVA 의 이클립스
+	1) SetUp Type : Custom -> 다음
+	2) MySQL Server 8.xx - x64 | MySQL Workbench 를 선택 후 화살표를 통해 오른쪽 박스로 이동 -> 다음
+	3) [Execute] 클릭
+	4) [Next] 클릭 -> [Next] 클릭
+	5) port 값 3306 인지 확인 후 [Next] 클릭 -> [Next] 클릭
+	6) [password] 1234 로 설정
+	7) [NNNNet] 클릭
+	8) [Execute] 클릭 -> [Next] 클릭 -> [Finish] 클릭
+
+3. 설치 확인	
+	1) MySQL Workbench 프로그램 실행
+	2) 메인화면에 [ Local instance MySQL80 ] 확인
+
+4. Workbench 를 통한 server 접속
+	1) 메인화면에 [ Local instance MySQL80 ] 클릭
+	2) 비밀번호 입력 
+	
+	
+	
+	
+	
+	
+	
+	
