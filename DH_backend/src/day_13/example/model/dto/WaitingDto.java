@@ -26,5 +26,7 @@ public class WaitingDto {
 		this.count = count;
 	}
 	
+	// WaitingDao <- 연결 -> WaitingView
+	// WaitingDao <- 연결 -> WaitingController
 	
 }
