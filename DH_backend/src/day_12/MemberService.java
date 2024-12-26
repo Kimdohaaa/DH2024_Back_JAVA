@@ -48,20 +48,25 @@ public class MemberService {
 		return null;
 	}
 	
-	public void rental(Scanner scan, BookDto[] bookArr, MemberDto[] memberArr, RentalArr[] rentalArr) {
+	public void rental(Scanner scan, BookDto[] bookArr, MemberDto[] memberArr, MemberDto[] rentalArr) {
 		System.out.println(">> 도서대여를 선택하셨습니다.");
 		
 		System.out.println("> 대여도서 이름 :");
 		String title = scan.next();
-		
+
+		//RentalArr rentalArr2 = new RentalArr(null);
+
 		Boolean rentalState = false;
+		MemberDto rental = new MemberDto(null);
+		
 		for(int i = 0; i < bookArr.length; i++) {
 			for(int j = 0; j < rentalArr.length ; j++) {
 				
 				if(bookArr[i] != null && bookArr[i].getTitle().equals(title) && bookArr[i].getCount() > 0) {
-					bookArr[i].setCount(bookArr[i].getCount()-1);
 					if(rentalArr[j] == null) {
-						RentalArr rental = new RentalArr(title); 
+						bookArr[i].setCount(bookArr[i].getCount()-1);
+						// rentalArr 에 안들어가ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
+						rentalArr[j] = title;
 						rentalState = true;
 						System.out.println(">> 도서대여완료");
 						
@@ -78,7 +83,7 @@ public class MemberService {
 				
 	}
 	
-	public void deleteRental(Scanner scan, BookDto[] bookArr, RentalArr[] rentalArr) {
+	public void deleteRental(Scanner scan, BookDto[] bookArr, MemberDto[] rentalArr) {
 		System.out.println(">> 도서반납을 선택하셨습니다.");
 		
 		System.out.println("> 반납도서 이름 : ");
@@ -110,7 +115,8 @@ public class MemberService {
 		System.out.println(">> 도서현황을 선택하셨습니다.");
 		
 		for(int i =0; i < rentalArr.length; i++) {
-			if(rentalArr[i].getRentalArr() !=  null) {
+			///
+			if(rentalArr[i] !=  null) {
 				System.out.printf(" 도서제목 : %s", rentalArr[i].getRentalArr());
 				break;
 			}
