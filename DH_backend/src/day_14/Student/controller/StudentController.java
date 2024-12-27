@@ -19,8 +19,12 @@ public class StudentController {
 	
 	// 1. 학생 등록 제어 메소드
 	public Boolean creatStudent(StudentDto studentDto) {
-		boolean result = StudentDao.getInstance().creatStudent(studentDto);
 		
+		boolean check = StudentDao.getInstance().check(studentDto);
+		boolean result = false;
+		if(check == true) {
+			result = StudentDao.getInstance().creatStudent(studentDto);
+		}
 		return result;
 	}
 	
