@@ -60,5 +60,34 @@ public class Example1 {
 		System.out.println(nameList);
 		
 		
+		
+		// 예제 p. 224
+		// 1. 리스트 객체 library 생성
+		ArrayList<Book> library = new ArrayList<>();
+		
+		// 2. 객체 내 요소 객체 추가
+		// 방법 1 )
+		library.add(new Book("태백산맥" , "조정래"));
+		library.add(new Book("데미안" , "헤르만 헤세"));
+		library.add(new Book("어떻게 살 것인가" , "유시민"));
+		library.add(new Book("토지" , "박경리"));
+		// 방법 2 )
+		Book book1 = new Book("어린왕자" , "생텍쥐페리");
+		library.add(book1);
+		
+		// 3. 리스트 순회
+		for(int i  = 0; i <= library.size() -1 ; i++) {
+			Book book = library.get(i);
+			System.out.println(book);
+		}
+		
+		System.out.println(library);
+		
+		
+		
+		
+		
+		
+		
 	}
 }
