@@ -1,5 +1,6 @@
 package day_14.Student.model.dao;
 
+import java.awt.Checkbox;
 import java.util.ArrayList;
 
 import day_14.Student.controller.StudentController;
@@ -57,6 +58,18 @@ public class StudentDao {
 			}
 		}
 		return false;
+	}
+	
+	
+	// 5. 중복검사 - 학생번호
+	public Boolean check(StudentDto studnetDto){
+		
+		for(int i = 0; i < studentList.size(); i++) {
+			if(studentList.get(i).getCode() == studnetDto.getCode()) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }
