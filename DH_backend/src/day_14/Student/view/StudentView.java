@@ -35,7 +35,7 @@ public class StudentView {
 			}else if(choose == 4) {
 				deleteStudent();
 			}else if(choose == 5) {
-				
+				break;
 			}
 		}
 	}
