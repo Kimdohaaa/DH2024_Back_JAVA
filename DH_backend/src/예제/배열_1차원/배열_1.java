@@ -18,9 +18,12 @@ public class 배열_1 {
 		System.out.print(">> 입력할 정수의 개수 : ");
 		int n = scan.nextInt();
 		
+		// 입력값 크기를 가진 배열 선언
 		int[] arr = new int[n];
+	
 		int result = 0;
 		
+		// 반복문을 통해 배열의 크기만큼 입력값 받기
 		for(int index = 0; index < arr.length; index++) {
 			System.out.print(">> n 개의 정수 : ");
 			arr[index] = scan.nextInt();
@@ -28,6 +31,8 @@ public class 배열_1 {
 		
 		System.out.println(">> 탐색할 정수 : ");
 		int findi = scan.nextInt();
+		
+		// 배열 내 특정값을 찾은 후 특정값의 개수만큼 result ++
 		for(int index = 0; index < arr.length; index++) {
 			for(; findi == arr[index];) {
 				result++;
