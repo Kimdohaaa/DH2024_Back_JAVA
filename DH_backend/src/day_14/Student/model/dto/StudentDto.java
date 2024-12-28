@@ -1,10 +1,12 @@
 package day_14.Student.model.dto;
 
 public class StudentDto {
+	// 멤버변수
 	private String name;
 	private String phone;
 	private int code;
 	
+	// 생성자
 	public StudentDto() {}
 	public StudentDto(String name, String phone, int code) {
 		this.name = name;
@@ -12,6 +14,8 @@ public class StudentDto {
 		this.code = code;
 	}
 	
+	
+	// getter / setter
 	public String getName() {
 		return name;
 	}
