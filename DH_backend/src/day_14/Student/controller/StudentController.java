@@ -20,11 +20,15 @@ public class StudentController {
 	// 1. 학생 등록 제어 메소드
 	public Boolean creatStudent(StudentDto studentDto) {
 		
+		// StudentDao 중복검사 메소드의 리턴값을 받을 변수
 		boolean check = StudentDao.getInstance().check(studentDto);
 		boolean result = false;
+		
+		// 중복검사 통과 시 StudentDao 학생등록 메소드와 연동
 		if(check == true) {
 			result = StudentDao.getInstance().creatStudent(studentDto);
 		}
+		// 중복검사에서 걸리면 false 리턴
 		return result;
 	}
 	
@@ -45,6 +49,7 @@ public class StudentController {
 	
 	// 4. 학생 삭제 메소드
 	public Boolean deleteStudent(int deleteCode) {
+		
 		boolean result = StudentDao.getInstance().deleteStudent(deleteCode);
 		
 		return result;
