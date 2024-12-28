@@ -61,7 +61,7 @@ public class StudentDao {
 	}
 	
 	
-	// 5. 중복검사 - 학생번호
+	// 5. 중복검사 -> 학생번호 중복 시 학생 등록 불가 StudentController creatStudent() 메소드와 연동
 	public Boolean check(StudentDto studnetDto){
 		
 		for(int i = 0; i < studentList.size(); i++) {
