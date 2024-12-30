@@ -90,7 +90,28 @@
 		- 대용량
 5. 논리
 	- bool : true / false
-		- bool == tinyint 
+		- bool == tinyint
+
+[제약 조건]
+- 테이블에서 문제 / 결함 이 되는 데이터가 입력되지 않도록 제약을 지정해놓은 것
+1. not null : 해당 필드에 null 값을 포함하지 않는다.
+2. unique : 해당 필드에 중복값을 허용하지 않는다(중복배제).
+3. default 기본값 : 해당 필드에 레코드(값) 삽입 시 값을 대입하지 않으면 지정한 기본값으로 초기화한다.
+4. default now() : 해당 필드에 레코드(값) 삽입 시 현재 시스템의 날짜 / 시간 초기화
+5. auto_increment : 해당 필드에 레코드(값) 삽입 시 순서대로 자동 번호가 삽입된다. -> MySQL 에서만 가능
+6. primary key : 기본키(=PK) 
+	-> 식별 가능한 고유값 필드 키   
+	-> constraint primary key(PK로 사용할 필드명); 을 통해 PK 키로 지정해준다.
+	예] 학번, 사번, 주민등록번호, 주문번호 등
+	★ PK 필드에는 not null 과 unique 가 기본적으로 포함되어있다.
+7. foreign key : 참조/외래키(=FK) 
+	-> 다른 테이블의 기본키를 참조하는 키
+	-> constraint foreign key(FK로 사용할 필드명) references 참조할 테이블명(PK필드명); 을 통해 FK 키롤 지정해준다.
+	★ FK 필드는 null 과 중복 데이터를 가질 수 있다. 
+
+★ 관례적으로 관계형 DB 에서는 기본키를 테이블 당 1개 이상 갖는다. ★
+
+
 [SQL]
 ★ SQL 명령어는 대소문자를 구분하지 않는다.
 0. Utility : 메타데이터 관리어
