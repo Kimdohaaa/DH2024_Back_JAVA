@@ -119,12 +119,15 @@
 	- create table 테이블명(필드명 자료형); -> 1개 생성 시
 	- create table 테이블명(필드명 자료형 , 필드명 자료형 , 필드명 자료형); -> 여러 개 생성 시 ,(쉼표)로 구분
 4. 테이블 조회 
-	- show table 테이블명;
+	- show table 테이블명; -> DB Server 내 모든 테이블 조회
+	- select * from 테이블명; -> 특정 테이블 조회
 5. 테이블 삭제
 	- drop table 테이블명;
 	- drop table if exists 테이블명;
-
-
+★ 테이블 생성이 안되는 이유
+1) 테이블 명 중복
+2) 오탈자 존재
+3) use 를 통한 DB 활성화를 하지 않은 경우
 
  
 	
