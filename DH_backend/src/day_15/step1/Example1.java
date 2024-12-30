@@ -1,4 +1,4 @@
-package day_15.step2;
+package day_15.step1;
 // 1. 동물클래스
 class 동물{
 	// 멤버변수
