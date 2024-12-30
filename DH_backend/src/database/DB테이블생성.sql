@@ -52,6 +52,21 @@ show tables;
 # 특정 테이블 확인
 select * from testtable3;
 
+# 제약조건 : 테이블에서 문제 / 결함 이 되는 데이터가 입력되지 않도록 제약을 지정해놓은 것
+use mydb1230;
+create table testtable4(
+	필드명1 tinyint not null, -- 지정한 필드에는 null 을 대입할 수 없다.
+    필드명2 smallint unique,  -- 지정한 필드에는 중복값을 대입할 수 없다.
+	필드명3 int default 10 ,  -- 지정한 필드에는 레코드 삽입 시 값을 생략하면 자동으로 기본값이 대입된다.
+	필드명4 bigint auto_increment, -- 지정한 필드에는 레코드 삽입 시 순서대로 자동 번호가 대입된다.
+    PK필드명5 double ,  -- PK 키이기 때문에 not null 과 unique 가 자동으로 포함 됨
+	constraint primary key(PK필드명5) -- 지정한 필드를 PK 필드로 지정
+);
 
-
+create table testtable5(
+	FK필드명1 double, -- FK 키이기때문에 null 과 중복데이터를 가질 수 있다.
+    constraint foreign key(FK필드명1) references testtable4(PK필드명5) 
+    -- 지정한 필드를 FK 필드로 지정
+	-- constraint foreign key(FK로 사용할 필드명) references 참조할 테이블명(PK필드명);
+);
 
