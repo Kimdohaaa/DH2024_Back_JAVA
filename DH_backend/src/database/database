@@ -3,7 +3,7 @@
 - 베이스 : 모임 / 집합
 - 정의 : 자료들의 집합 
 - 종류
-	1. 관계형 DB -> 데이터를 테이블 형식으로 관리 * 실무에서 가장 많이 사용
+	1. 관계형 DB -> 데이터를 테이블 형식으로 관리 / 자료들 간의 종속되는 관계 표현이 가능한 DB* 실무에서 가장 많이 사용
 	2. NOSQL DB -> 데이터를 객체 형식으로 관리
 	3. 트리형 DB
 	4. 네트워크 DB
@@ -55,7 +55,78 @@
 	1) 메인화면에 [ Local instance MySQL80 ] 클릭
 	2) 비밀번호 입력 
 	
-	
+[용어정리]
+1. 관계형 DB : 자료들 간의 종속되는 관계를 표현한 DB
+2. 테이블
+
+[My SQL 기준 필드의 타입]
+1. 정수
+	- tinyint (1 바이트) : -128 ~ + 127
+	- smallint (2 바이트) : +- 3 만 정도
+	- mediumint (3 바이트) : +- 800 만 정도
+	- int (4 바이트) : +- 21 억 정도
+	- bigint (8 바이트) : +- 21 억 이상
+2. 실수
+	- float (4 바이트) : 부동소수점사용(표현 범위 이상일 경우 오차 존재 O)
+	- double (8 바이트) : 부동소수점사용(표현 범위 이상일 경우 오차 존재 O)
+	- decimal (문자 타입 -> 바이트가 정해져있지 않음) : 실수를 문자로 처리(오차 존재 X)
+3. 날짜 / 시간
+	- date(날짜 표현) 0000-00-00 : 1000년 ~ 9999년
+	- time(시간 표현) 00:00:00 
+	- datetime(날짜/시간 표현) : 0000-00-00 00:00:00
+4. 문자
+	- char(문자길이)
+		- 고정길이
+		- 최대 255 글자
+		- 예시 : char(5) -> "유재석" -> [유][재][석][][]
+	- varchar(문자길이)
+		- 가변길이
+		- 최대 255 글자
+		- 예시 : varchar(5) -> "유재석" -> [유][재][석]
+	- text
+		- 최대 6 만 글자
+	- longtext
+		- 최대 42 억 글자 (=4GB)
+		- 대용량
+5. 논리
+	- bool : true / false
+		- bool == tinyint 
+[SQL]
+★ SQL 명령어는 대소문자를 구분하지 않는다.
+0. Utility : 메타데이터 관리어
+	1) show 
+		- show database; : DB Server 내 모든 DB 목록 조회
+		- show variables like'datdir' : DB Server 내 local path 조회
+	2) use 
+		- use DB명; : 여러 DB 중 특정 DB 활성화
+1. DDL(Data Definition Language) : DB 정의어
+	1) create
+		- create database DB명; : DB Server 내 DB 생성
+	2) drop 
+		- drop database DB명; : DB Server 내 특정 DB 삭제
+		- drop database if exists DB명; : DB Server 내 지정한 DB 가 존재할 시 제거
+2. DML(Data Manipulation Language) : DB 조작어
+3. DCL(Data Control Language) : DB 제어어
+4. TCL(Transaction Control Language) : 트렌젝션 제어어
+
+
+[테이블 생성]
+1. DB 생성 
+	- create database DB명;
+2. 생성한 DB 활성화 
+	- use DB명;
+3. 테이블 생성 
+	- create table 테이블명(필드명 자료형); -> 1개 생성 시
+	- create table 테이블명(필드명 자료형 , 필드명 자료형 , 필드명 자료형); -> 여러 개 생성 시 ,(쉼표)로 구분
+4. 테이블 조회 
+	- show table 테이블명;
+5. 테이블 삭제
+	- drop table 테이블명;
+	- drop table if exists 테이블명;
+
+
+
+ 
 	
 
 ________________________________________________________________
