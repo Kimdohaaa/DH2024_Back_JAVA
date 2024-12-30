@@ -49,7 +49,7 @@ create table membert(
     kno int,
     constraint foreign key(kno) references kio(kno), -- FK 필드를 통해 kio 테이블 참조
     mno int,
-    constraint foreign key(mno) references menut(mno)
+    constraint foreign key(mno) references menut(mno) -- FK 필드를 통해 menu 테이블 참조
 );
 
 show tables;
