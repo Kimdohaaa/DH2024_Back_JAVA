@@ -47,5 +47,5 @@ public class 배열_4 {
 			break;
 		}
 	}
-
+//
 }
