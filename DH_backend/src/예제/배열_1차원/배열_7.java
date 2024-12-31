@@ -21,17 +21,20 @@ public class 배열_7 {
 		
 		int[] arr = new int[30];
 		
-		for(int i = 0; i < arr.length ; i++) {
-			arr[i] = i+1;
-		}
-		System.out.println(Arrays.toString(arr));
-		for(int i = 1; i <= 28; i++) {
+		for(int i = 0; i < 28; i++) {
 			System.out.print(">> 제출자 출석번호 : ");
-			int number = scan.nextInt();
-			for(int j = 0; j < arr.length; j++) {
-				if(arr[i] == number) {
-					
-				}
+			int num = scan.nextInt();
+			// 배열의 인덱스는 0부터 시작하기 때문에 입력값 -1
+			// 제출한 인덱스를 1로 지정
+			arr[num - 1] = 1;
+		}
+		
+		// 30개의 정수를 입력값에 없는 정수를 찾기 위해 for 문 사용
+		for(int i = 0; i < 30; i ++) {
+			// 만약 arr[i] 가 0 이라면 -> 제출하지 않았다면
+			if(arr[i] == 0) {
+				// 배열의 인덱스는 0부터 +1
+				System.out.println(i+1);
 			}
 		}
 	}
