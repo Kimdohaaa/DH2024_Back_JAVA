@@ -48,6 +48,8 @@ create table membert(
 	constraint primary key(wno), -- cno 를 PK 필드로 지정
     kno int,
     constraint foreign key(kno) references kio(kno), -- FK 필드를 통해 kio 테이블 참조
+    con int,
+    constraint foreign key(cno) references category(cno),
     mno int,
     constraint foreign key(mno) references menut(mno) -- FK 필드를 통해 menu 테이블 참조
 );
