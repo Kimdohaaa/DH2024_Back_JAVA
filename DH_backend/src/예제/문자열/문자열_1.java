@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 [출력]
 S 의 i 번째 글자를 출력한다.
-
-
 */
 public class 문자열_1 {
 
