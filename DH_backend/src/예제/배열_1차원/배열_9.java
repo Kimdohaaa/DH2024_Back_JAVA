@@ -30,40 +30,36 @@ public class 배열_9 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		
+	
 		System.out.print(">> 바구니의 개수 : ");
+		// 입력받은 크기만큼의 배열을 선언
 		int[] basket = new int[scan.nextInt()];
 		System.out.print(">> 교환할 횟수 : ");
 		int change = scan.nextInt();
+		// 배열 값 교환을 위한 임시 저장 공간 선언
+		int temp;
 		
-		int startIndex = 0;
-		int endIndex = 0;
-		
-		
+		// 배열의 index 는 0부터 시작하기 때문에 +1 을 통해 배열값이 1부터 시작하도록 해줌
 		for(int i = 0; i < basket.length; i++) {
 			basket[i] = i + 1;
 		}
 		
+		// 교환할 횟수를 입력값으로 받은 change 변수의 값 만큼 반복
 		for(int i = 0; i < change; i++) {
+			// 배열의 인덱스는 0부터 시작하기 때문에 입력받은 값 -1
 			System.out.print(">> 교환할 바구니 번호 1 : ");
-			int start = scan.nextInt();
+			int start = scan.nextInt()-1;
 			System.out.print(">> 교환할 바구니 번호 2 : ");
-			int end = scan.nextInt();
-			
-			for(int j = 0; j < basket.length; j++) {
-				for(int z = 0; z < basket.length; z++) {
-					if(basket[j] == start) {
-						if(basket[z] == end) {
-							int temp = basket[j];
-							basket[j] = basket[z];
-							basket[z] = temp;
-							//break;
-						}
-					}
-				}
-			}
+			int end = scan.nextInt()-1;
+		
+			// 임시 저장 공간 temp 를 통해  배열 내 값 교환
+			temp = basket[start];
+			basket[start] = basket[end];
+			basket[end] = temp;
 		}
+		
 		System.out.println(Arrays.toString(basket));
+
 	}
 
 }
