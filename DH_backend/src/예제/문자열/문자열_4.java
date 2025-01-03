@@ -18,9 +18,12 @@ public class 문자열_4 {
 		Scanner sc = new Scanner(System.in);
 		String str = sc.next();
 		
+		// 입력받은 문자열을 char 타입으로 쪼개기 위한 for 문 
 		for(int i = 0; i < str.length(); i++) {
+			// .charAt() 메소드를 통해 문자열에 인덱스를 지정
 			char index = str.charAt(i);
 			
+			// int 타입으로의 캐스팅을 통해 아스키코드 출력
 			System.out.println((int) index);
 		}
 	}
