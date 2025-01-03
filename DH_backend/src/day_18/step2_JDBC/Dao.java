@@ -96,7 +96,7 @@ public class Dao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			// 3) 기재된 SQL 실행
-				// .executeQuery() 메소드 : 현재 기재된 SQL 을 실행하고 조회결과를 조작 가능한 인스턴스 반환(Resultset 반환)
+				// .executeQuery() 메소드 : 현재 기재된 SQL 을 실행하고 조회결과를 조작 가능한 인스턴스 반환(ResultSet 반환)
 			// ps.executeQuery();
 			
 			// 4) SQL 실행 결과 반환 받기
@@ -133,22 +133,30 @@ public class Dao {
 			}
 			
 		}catch (SQLException e) {	System.out.println(e);	}
+		
 		System.out.println(">> update 실패");	
 	}
 	
 	// [4] delete
 	public  void delete() {
 		try {
+			// 1) SQL 작성
 			String spl = "delete from user where uno = 1";
+			
+			// 2) SQL 기재
 			PreparedStatement ps = conn.prepareStatement(spl);
 		
+			// 3) 기재된 SQL 실행하고 반환 받기
 			int count = ps.executeUpdate();
 			
+			// 4) 반환 결과 제어
 			if(count == 1) {	// 1 개를 삭제 했다면	
 				System.out.println(">> delete 성공");
 				return;
 			}
+			
 		}catch (SQLException e) {	System.out.println(e);	}
+		
 		System.out.println(">> delete 실패");	
 	}
 	
