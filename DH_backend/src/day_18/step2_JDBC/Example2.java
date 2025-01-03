@@ -15,6 +15,9 @@ public class Example2 {
 		// [4] update 확인
 		DAOd.getInstance().update();
 		
+		// [5] delete 확인
+		DAOd.getInstance().delete();
+		
 		DAOd.getInstance().select();
 	}
 }
