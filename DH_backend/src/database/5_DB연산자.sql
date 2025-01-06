@@ -60,7 +60,7 @@ INSERT INTO buy VALUES(NULL, 'MMU', '지갑', NULL, 30, 4);
 select * from member;
 select * from buy;
 
-# [2] 틀정 속성의 레코드 조회
+# [2] 특정 속성의 레코드 조회
 select mid from member;
 select mid, mname from member; -- 여러 속성 조회
 
@@ -94,12 +94,74 @@ select mnumber 인원수
     , mnumber mod 3 -- 나머지
 					from member;
 
+# [6] 조건절 (where)
+-- 비교 연산자 : 속성명 = 속성값 (같다.) | 속서명 != 속성값 (같지 않다.) / <= / >= 
+-- 논리 연산자 : not (같지 않다.) / 조건1 and 조건2 (논리곱) / 조건1 or 조건2 (논리합)
+-- 기타 연산자 : 속성명 between 조건1 and 조건2 (사이값) / 속성명 in (값1 , 값2)
+		-- / 속성명 is null(null 조회) / 속성명 is not null(null 아닌 값 조회) 
+select * from member where mname = '블랙핑크'; -- mname 속성값이 '블랙핑크' 인 레코드 조회
+select * from member where mnumber = 4; -- mnumber 속성값이 4 인 레코드 조회
+select * from member where mname != '블랙핑크'; -- mname 속성값이 '블랙핑크' 가 아닌 레코드 조회
+select * from member where not mname = '블랙핑크' ; -- mname 속성값이 '블랙핑크' 가 아닌 레코드 조회
+select * from member where mheight <= 162; -- mheight 속성값이 162 이하인 레코드 조회
+select * from member where mheight >= 165 and mheight <= 170; -- mheight 속성값이 165 이하 , 170 이하인 레코드 조회
+select * from member where mheight between 165 and 170; -- mheight 속성값이 165 이하 , 170 이하인 레코드 조회
+select * from member where maddr = '경기' or maddr = '전남'; -- maddr 속성값이 '경기' 이거나 '전남' 인 레코드 조회
+select * from member where maddr in('경기','전남'); -- maddr 속성값이 '경기' 이거나 '전남' 인 레코드 조회
+
+select * from member where mphone1 = ' '; -- 불가
+select * from member where mphone1 = null; -- 불가
+select * from member where mphone1 is null; -- mphone1 속성값이 null 인 레코드 조회
+select * from member where mphone1 is not null; -- mphone1 속성값이 null 이 아닌 레코드 조회
+-- 주의점 : 속성값이 null 일때는 = (같다) 사용불가 -> 속성명 is null 을 통해 조회 --
+
+-- 문자열 패턴 연산자 : 속성명 like '문자패턴'
+		-- 문자패턴 1 : % -> 모든 문자 대응 / 문자 개수 상관 X 	ex] 삼성전자 / 물전자 -> %전자 => 삼성전자 / 물전자 조회가능
+        -- 문자패턴 2 : _ -> 언더바 개수만큼 문자 대응 			ex] 삼성전자 / 물전자 -> _전자 => 물전자 조회 가능
+select * from member where mname like '에이%'; -- mname 속성값이 '에이' 로 시작하는 레코드 조회
+select * from member where mname like '에이_'; -- mname 속성값이 '에이' 로 시작하는 세글자인 레코드 조회
+select * from member where mname like '%핑크'; -- mname 속성값이 '핑크' 로 끝나는 레코드 조회
+select * from member where mname like '%이%'; -- mname 속성값에 '이' 가 포함된 레코드 조회
+select * from member where mname like '_이_'; -- mname 속성값에 '이' 가 두번째에 있고 세글자인 레코드 조회
+
+# [7] 정렬
+-- order by 속성명 asc -> 지정한 속성명 기준으로 속성값들을 오름차순 정렬 (기본값 -> 생략 가능) 
+-- order by 속성명 desc -> 지정한 속성명 기준으로 속성값들을 내림차순 정렬
+-- 다중정렬 : order by 속성명1 정렬기준 , 속성명2 정렬기준 asc / desc (,(쉼표)로 구분)
+	-- 주의점 : 2차정렬은  1차정렬 내 동일한 값 내에서 2차정렬 -> 1차정렬이 무의미해지지 않도록 하기 위해서
+select * from member order by mdebut asc; -- mdebut 속성명을 과거 ~ 현재 (오름차순) 으로 레코드 조회
+select * from member order by mdebut; -- asc 생략 가능
+select * from member order by mdebut desc; -- mdebut 속성명을 현재 ~ 과거 (내림차순) 으로 레코드 조회
+select * from member order by mname asc; -- mname 속성명을 오름차순으로 레코드 조회
+select * from member order by mname desc; -- mname 속성명을 내림차순으로 레코드 조회
+
+select * from member order by maddr desc, mdebut asc; -- maddr 속성값을 정렬한 후 동일한 속성값이 존재할 경우 동일한 속성값 끼리 mdebut 속성명을 정렬
+/*
+MMU	마마무	4	전남	061	99999999	165	2014-06-19
+GRL	소녀시대	8	서울	02	44444444	168	2007-08-02
+OMY	오마이걸	7	서울					160	2015-04-21
+TWC	트와이스	9	서울	02	11111111	167	2015-10-19
+SPC	우주소녀	13	서울	02	88888888	162	2016-02-25
+RED	레드벨벳	4	경북	054	55555555	161	2014-08-01
+BLK	블랙핑크	4	경남	055	22222222	163	2016-08-08
+ITZ	잇지		5	경남					167	2019-02-12
+APN	에이핑크	6	경기	031	77777777	164	2011-02-10
+WMN	여자친구	6	경기	031	33333333	166	2015-01-15
+★ maddr 속성값 정렬 후 mdebut 정렬 -> 전남/서울/경북/경남/경기 내에서 mdebut asc ★
+*/
+
+# [8] 레코드 출력 제한 -> 조회결과의 레코드 수 제한
+-- limit 레코드수
+-- limit 시작레코드번호, 개수 -> 번호는 0부터 시작
+select * from member limit 2; -- 조회결과의 레코드에서 상위 2개만 조회
+select * from member limit 0, 2; -- 조회 결과의 레코드에서 0번 레코드 ~ 2개만 조회
+select * from member limit 2, 3; -- 조회 결과의 레코드에서 0번 레코드 ~ 3개만 조회
+# 예제 : mheight 속성명을 상위 3개만 조회
+select * from member order by mheight desc limit 3; -- mheight 속성명을 내림차순으로 정렬한 후 상위 3개 레코드 조회
 
 
 
 
 
-
-
-
-
+# 실습 1: : 주소가 '서울' 인 레코드를 데뷔일 기준으로 내림차순으로 조회한 결과 상위 2개만 조회
+select * from member where maddr = '서울' order by mdebut desc limit 2; 
