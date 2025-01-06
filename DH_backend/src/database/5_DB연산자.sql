@@ -94,8 +94,9 @@ select mnumber 인원수
     , mnumber mod 3 -- 나머지
 					from member;
 
-# [6] 조건절 (where)
--- 비교 연산자 : 속성명 = 속성값 (같다.) | 속서명 != 속성값 (같지 않다.) / <= / >= 
+# [6] 일반 조건절 (where) ★ where 문에서는 별칭 사용 불가
+-- >>> select 문에서 컴퓨터가 처리하는 순서 : select -> from -> where 순서이기 때문에 where 절에서 별칭 지정 시 select 문에서 별칭을 알 수 없다.
+-- 비교 연산자 : 속성명 = 속성값 (같다.) | 속성명 != 속성값 (같지 않다.) / <= / >= 
 -- 논리 연산자 : not (같지 않다.) / 조건1 and 조건2 (논리곱) / 조건1 or 조건2 (논리합)
 -- 기타 연산자 : 속성명 between 조건1 and 조건2 (사이값) / 속성명 in (값1 , 값2)
 		-- / 속성명 is null(null 조회) / 속성명 is not null(null 아닌 값 조회) 
@@ -166,3 +167,75 @@ select * from member where maddr = '서울' order by mdebut desc limit 2;
 -- where maddr = '서울' -> maddr 속성명이 '서울'인 레코드 조회
 -- order by mdebut desc -> mbebut 속성명을 내림차순으로 정렬
 -- limit 2; -> 상위 2개 레코드 조회
+
+# [9] 그룹
+-- group by 그룹속성명 having 그룹조건
+-- 주의점 : 두 개 이상의 속성명 사용 -> 그룹 대상이 동일하더라도 다른 속성명의 값이 다를 수 있으므로 집계 / 통계 후에 그룹화
+select * from buy; 
+select bpname from buy group by bpname; -- buy 테이블의 bpname 속성명 값을 그룹화함 -> 중복값이 없어짐
+select bpname, bprice from buy group by bpname; -- 오류 : bpname 이 동일하더라도 bprice 가 다를 수 있기 때문에 오류 발생
+/*
+학년 점수			
+1	30
+2	20			=> 1학년의 점수합계(집계 / 통계) =>			그룹화
+1	40
+-- 학년과 점수를 그룹화하려할 경우 학년은 같아도 점수는 다르기 때문에 그룹화 불가
+-- 점수를 집계 / 통계 하여 동일하게 만든 후 그룹화 함
+*/
+
+# [10] 집계 / 통계 함수
+select bamount from buy;
+select sum(bamount) from buy; -- bamount 속성명의 값들의 총 합계
+select avg(bamount) from buy; -- bamount 속성명의 값들의 평균
+select min(bamount) from buy; -- bamount 속성명의 값들의 최솟값
+select max(bamount) from buy; -- bamount 속성명의 값들의 최댓값
+select count(bamount) from buy; -- bamount 속성명의 값들의 개수 (null 제외)
+select count(*) from buy; -- bamount 속성명의 레코드의 개수 (null 포함)
+
+# 예제 1 : 회원아이디 별 구매수량 총 합계 조회
+select mid, sum(bamount) from buy group by mid; -- mid 속성명의 값을 그룹화 -> bamount 속성명을 집계한 레코드를 조회
+# 예제 2 : 회원아디 별 총 구매 금액 총합계 조회
+select mid, sum(bamount * bprice) from buy group by mid; -- mid 속성명의 값을 그룹화 -> bamount 속성명 값 * bprice 속성명 값 연산 총 합산 집계
+# 예제 3 : 회원아이디 별 구매 평균 조회
+select mid, avg(bpirce) from buy group by mid; -- mid 속성명의 값을 그룹화 -> bpirce 의 평균값 집계
+# 예제 4 : 총 구매횟수 조회
+select count(*) from buy;
+# 예제 5 : 회원아이디 별 구매 횟수 조회
+select mid, count(bpname) from buy group by mid; 
+
+# [11] 그룹 조건절 (having) -- where은 그룹화 전 조건 having 은 그룹화한 후 조건
+-- 주의점 : select 문에서 컴퓨터가 처리하는 순서 : select -> from -> where -> group by -> having 순서이기 때문에 where 절에서 별칭 지정 시 select 문에서 별칭을 알 수 없다.
+# 예제 1 : 구매수량이 3 초과인 회원아이디 별 레코드 조회 
+select mid from buy where bamount > 3;  
+# 예제 2: 회원아이디 별 총 구매 금액이 1000 초과인 레코드 조회
+select mid, sum(bamount * bprice) from buy group by mid having sum(bamount * bprice) >= 1000;
+select mid, sum(bamount * bprice) as 총구매금액 from buy group by mid having 총구매금액 > 1000; -- as 를 통해 별칭 사용
+select mid , bprice 구매가격 from buy where 구매가격 >= 1000; -- 오류 : where 절에서는 별칭을 사용할 수 없기 때문
+select mid , sum(bamount * bprice) as 총구매금액 where 총구매금액 >= 1000; -- 오류 : 집계 후 조건은 where 절 사용이 불가능하기 때문
+
+# 예제 : 구매수량(bamount)이 2개 초과인 레코드에서 회원아이디별 총 구매가격(bprice) 평균이 50 이상인 레코드 조회 
+-- 조건 :  구매가격 평균으로 내림차순 후 상위 2개 조회
+select * from buy  where bamount > 2; -- 구매수량이 2개 초과인 레코드
+select mid as 회원아이디, avg(bprice) as 구매가격평균 from buy  where bamount > 2 group by 회원아이디; -- 회원아이디 별 구매가격평균
+select mid as 회원아이디, avg(bprice) as 구매가격평균 from buy  
+										where bamount > 2 
+										group by 회원아이디 
+										having 구매가격평균 >= 50; -- 구매가격평균이 50 이상 
+
+select mid as 회원아이디, avg(bprice) as 구매가격평균 from buy  
+										where bamount > 2 
+										group by 회원아이디 
+										having 구매가격평균 >= 50
+                                        order by 구매가격평균 desc;	-- 구매가격 평균 내림차순으로 정렬
+                                        
+select mid as 회원아이디, avg(bprice) as 구매가격평균 from buy  
+										where bamount > 2 
+										group by 회원아이디 
+										having 구매가격평균 >= 50
+                                        order by 구매가격평균 desc
+                                        limit 0, 2; -- 상위 2개 레코드 조회
+                                   
+# select 사용 시 여러 절이 있을 때 작성 순서 
+-- select 속성명 from 테이블명 where 조건절 group by 그룹속성명 having 그룹조건 order by 정렬속성명  정렬기준 limit 시작번호 , 개수
+# select 처리 순서
+-- select -> from -> where -> group by -> having -> order by -> limit 
