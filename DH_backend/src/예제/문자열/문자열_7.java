@@ -26,21 +26,25 @@ public class 문자열_7 {
 		Scanner scan = new Scanner(System.in);
 		System.out.print(">> 문자열 입력 횟수 : ");
 		int incount = scan.nextInt();
-		int count = 0;
-		String str;
 		
 		for(int i =0; i < incount ; i++) {
 			System.out.print(">> 문자열 반복 횟수 : ");
-			count = scan.nextInt();
+			int count = scan.nextInt();
 			System.out.print(">> 문자열 입력");
-			str = scan.next();
-			for(int j = 0; j < str.length(); j++) {
-				if(str.charAt(i) < count) {
-					System.out.println(str.charAt(i));
+			String str = scan.next();
+		
+			for(int z = 0; z < str.length() ; z++) {
+				
+				for(int j = 0; j < count; j++) {
+				
+					System.out.print(str.charAt(z));
+					
 				}
 			}
+
 		}
 		
+		System.out.println();
 	}
 
 }
