@@ -160,8 +160,9 @@ select * from member limit 2, 3; -- 조회 결과의 레코드에서 0번 레코
 select * from member order by mheight desc limit 3; -- mheight 속성명을 내림차순으로 정렬한 후 상위 3개 레코드 조회
 
 
-
-
-
 # 실습 1: : 주소가 '서울' 인 레코드를 데뷔일 기준으로 내림차순으로 조회한 결과 상위 2개만 조회
 select * from member where maddr = '서울' order by mdebut desc limit 2; 
+-- select * from -> member 테이블 전체 레코드 조회
+-- where maddr = '서울' -> maddr 속성명이 '서울'인 레코드 조회
+-- order by mdebut desc -> mbebut 속성명을 내림차순으로 정렬
+-- limit 2; -> 상위 2개 레코드 조회
