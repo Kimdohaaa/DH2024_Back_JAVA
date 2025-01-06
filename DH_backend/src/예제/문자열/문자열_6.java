@@ -51,6 +51,7 @@ public class 문자열_6 {
 				}
 			}
 		}
+		// 커밋확인
 		
 		
 		System.out.println(Arrays.toString(arr));
