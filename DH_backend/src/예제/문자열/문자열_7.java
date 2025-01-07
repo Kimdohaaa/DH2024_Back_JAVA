@@ -27,14 +27,16 @@ public class 문자열_7 {
 		System.out.print(">> 문자열 입력 횟수 : ");
 		int incount = scan.nextInt();
 		
+		// 입력횟수만큼 반복
 		for(int i =0; i < incount ; i++) {
 			System.out.print(">> 문자열 반복 횟수 : ");
 			int count = scan.nextInt();
 			System.out.print(">> 문자열 입력");
 			String str = scan.next();
 		
+			// 입력받은 문자열 순회
 			for(int z = 0; z < str.length() ; z++) {
-				
+				// 입력받은 문자열을 char 단위로 나눠 count 값만큼 반복
 				for(int j = 0; j < count; j++) {
 				
 					System.out.print(str.charAt(z));
@@ -44,7 +46,7 @@ public class 문자열_7 {
 
 		}
 		
-		System.out.println();
+		//System.out.println();
 	}
 
 }
