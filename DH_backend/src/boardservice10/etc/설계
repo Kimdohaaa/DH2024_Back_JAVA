@@ -56,3 +56,10 @@
 		
 	8. 기능별 VIEW - CONTROLLER - DAO 코드 작성하기. 
 		1. 회원가입view - 회원가입controller - 회원가입dao
+		
+	-----------------------------------------
+	1. DTO
+	2. 각 클래스 별 싱글톤 만들기
+	3. DB connect => DAO 에서 작성
+		- JDBC : JAVA <-연동-> DB Server	 
+		
