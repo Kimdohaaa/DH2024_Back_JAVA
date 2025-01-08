@@ -63,3 +63,26 @@
 	3. DB connect => DAO 에서 작성
 		- JDBC : JAVA <-연동-> DB Server	 
 		
+		
+		
+		
+		
+	1. 회원가입			C		insert 
+	2. 아이디 찾기			R		select
+	3. 비밀번호 찾기		R		select
+	4. 로그인				R		select
+	5. 로그아웃			로직		X
+	6. 내정보조회			R		select
+	7. 회원탈퇴			D		delete
+	8. 회원수정			U		update
+	디자인 패턴 : 프로그래밍 설계과정에 자주 발생되는 문제점을 해결하는 설계 방법 제시	
+	
+	
+	
+	
+	
+	
+	
+	
+
+		
