@@ -34,8 +34,7 @@ public class MemberView {
 			}else if(choose == 4) {
 				findPwd();
 			}else if(choose == 5) {
-				System.out.println(">> 로그아웃 성공");
-				break;
+				logout();
 			}
 		}
 	}
