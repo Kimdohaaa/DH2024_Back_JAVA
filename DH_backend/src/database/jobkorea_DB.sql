@@ -29,7 +29,7 @@ create table post(
     cno int unsigned,
     eno int unsigned,
     constraint primary key (pno),
-    constraint foreign key(cno) references category (cno)on update cascade on delete cascade
+    constraint foreign key(cno) references category (cno)on update cascade on delete cascade,
     constraint foreign key(eno) references category (eno)on update cascade on delete cascade  
 );
 -- post sample --
