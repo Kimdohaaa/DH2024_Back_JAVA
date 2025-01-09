@@ -75,6 +75,7 @@ public class MemberView {
 		
 		if(result) {
 			System.out.println(">> 로그인 성공");
+			BoardView.getInstance().index(); // 로그인 성공 시 BoardView 의 index 메소드 호출
 		}else {
 			System.out.println(">> 동일한 회원정보가 없습니다.");
 		}
