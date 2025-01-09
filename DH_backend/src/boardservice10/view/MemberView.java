@@ -135,7 +135,7 @@ public class MemberView {
 	}
 	
 	// [6] 내정보
-	public void myInfo() {
+	public int myInfo() {
 		MemberDto result = MemberController.getInstance().myInfo();
 		
 		System.out.println("======= 마이페이지 =======");
@@ -149,27 +149,59 @@ public class MemberView {
 			System.out.println(">> 1. 회원수정 2. 회원탈퇴 3. 뒤로가기 ");
 			int choose2 = scan.nextInt();
 			if(choose2 == 1) {
-				
+				update();
 			}else if(choose2 == 2) {
-				delete();
-				run();
+				// delete 메소드에서 0 을 반환 시
+				int state = delete();
+				if(state == 0) {
+					return 0;	
+				}
 			}else if(choose2 == 3) {
 				break;
 			}
+			
 		}
+		
+		return 1; // 회원 유지
 	}
 		
 	// [7] 회원 탈퇴
-	public void delete() {
+	public int delete() {
 			System.out.println(">> 정말 회원 탈퇴를 하시나요? 0. 예 1. 아니요");
 			int choose3 = scan.nextInt();
 			
 			if(choose3 == 0) {
 				MemberController.getInstance().delete();
-				logout(); 	// 탈퇴 성공 시 로그아웃
-			}else if(choose3 == 1) {
-				BoardView.getInstance().index(); // 탈퇴를 하지 않을 시 BoardView 의 index() 메소드 연동
+				return 0;  // 0-> 탈퇴한 상태로 설계 (기록을 남기기 위해)
 			}
+			
+			return 1;	// 1 -> 탈퇴하지 않은 상태로 설계 (기록을 남기기 위해)
+	}
+	
+	// [8] 회원정보 수정 
+	public void update() {
+		System.out.print(">> 새로운 비밀번호 : ");
+		String mpwd = scan.next();
+		System.out.print(">> 새로운 이름 : ");
+		String mname = scan.next();
+		System.out.print(">> 새로운 전화번호 : ");
+		String mphone = scan.next();
+		
+		
+		// 객체화
+		MemberDto memberDto = new MemberDto();
+		memberDto.setMpwd(mpwd);
+		memberDto.setMname(mname);
+		memberDto.setMphone(mphone);
+		
+		// Controller 에게 전달
+		boolean result = MemberController.getInstance().update(memberDto);
+		
+		if(result == true) {
+			System.out.println(">> 수정 완료");
+		}else {
+			System.out.println(">> 수정 실패");
+		}
 	}
 }
 
