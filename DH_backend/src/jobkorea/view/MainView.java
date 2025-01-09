@@ -22,46 +22,50 @@ public class MainView {
 	// 2 : 기업 로그인 / 회원가입 메소드 연동 -> 성공 시 기업 view 연동 
 	// 3 : 취업 연동
 	public void run() {
-		System.out.println(">> 1.일반 2.기업 3.취업");
-		int choose = scan.nextInt();
 		
-		if(choose == 1) {
+		while(true) {
+			System.out.println(">> 1.일반 2.기업 3.취업");
+			int choose = scan.nextInt();
+
+			if(choose == 1) {
 			
-			System.out.println(">> 1. 일반회원가입 2. 일반로그인");
-			int choose2 = scan.nextInt();
-			
-			if(choose2 == 1) {
-				mSignUp();
-			}else if(choose2 == 2) {
-				mLogin();	// 성공 시 지원 / 후기 View 연동
-			}
-			
-		}else if(choose == 2) {
-			System.out.println(">> 1. 기업회원가입 2. 기업 로그인");
-			
-			int choose3 = scan.nextInt();
-			
-			if(choose3 == 1) {
-				eSignUp();
-			}else if(choose3 == 2) {
-				 eLogin();	// 성공 시 기업 View 연동
-			}
-			
-		}else if(choose == 3) {
-			System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
-			int choose4 = scan.nextInt();
-			
-			if(choose4 == 1) {
-				bestList();
-			}else if(choose4 == 2) {
-				System.out.print(">> 후기를 볼 기업명 : ");
-				String ename = scan.next();
-				reviewList(ename);
-			}else if (choose4 ==3) {
+				System.out.println(">> 1. 일반회원가입 2. 일반로그인");
+				int choose2 = scan.nextInt();
 				
+				if(choose2 == 1) {
+					mSignUp();
+				}else if(choose2 == 2) {
+					mLogin();	// 성공 시 지원 / 후기 View 연동
+				}
+				
+			}else if(choose == 2) {
+				System.out.println(">> 1. 기업회원가입 2. 기업 로그인");
+				
+				int choose3 = scan.nextInt();
+				
+				if(choose3 == 1) {
+					eSignUp();
+				}else if(choose3 == 2) {
+					 eLogin();	// 성공 시 기업 View 연동
+				}
+			
+			}else if(choose == 3) {
+				System.out.println(">> 1. 우수기업 2. 기업후기 3. 메인페이지");
+				int choose4 = scan.nextInt();
+				
+				if(choose4 == 1) {
+					bestList();
+				}else if(choose4 == 2) {
+					System.out.print(">> 후기를 볼 기업명 : ");
+					String ename = scan.next();
+					reviewList(ename);
+				}else if (choose4 ==3) {
+					
+				}
 			}
 		}
 	}
+	// 회원가입 로그인 결과를 boolean 으로 반환받아 변수에 반환값을 저장 -> 성공 : 다음 view 연동 실패 : break;
 
     // [1] 회원 회원가입 메소드
     public void mSignUp() {
@@ -77,7 +81,7 @@ public class MainView {
     	
     	if(result == 0) {
     		System.out.println(">> 로그아웃 성공");
-    	
+    		return;
     	}
     }
     
@@ -94,11 +98,10 @@ public class MainView {
     // [3] 기업 로그아웃 메소드
     public void eLogout() {
        int result = MainController.getInstance().eLogout();
-       System.out.println(">> 로그아웃 성공");
        
        if(result == 0) {
     	   System.out.println(">> 로그아웃 성공");
-    	  
+    	   return;
        }
     }
     
