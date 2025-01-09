@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import jobkorea.controller.MainController;
 
@@ -99,8 +100,8 @@ public class MainDao {
 				
 				System.out.println("기업명 : "+ name + "후기 : " + rcontent + "별점 : " + rrating);
 			}
-		}catch (Exception e) {
-			// TODO: handle exception
+		}catch (SQLException e) {
+			System.out.println(e);
 		}
 	}
 }
