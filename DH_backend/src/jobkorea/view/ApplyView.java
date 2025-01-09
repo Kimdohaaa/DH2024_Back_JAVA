@@ -38,14 +38,14 @@ public class ApplyView {
 			MainView.getInstance().mLogout();
 		}
 	}
-
+	int loginNo = 1;
 	// [1] 지원
 	public void applyC() {
 		
 	}
 	// [2] 지원 현황 출력
 	public void applyR() {
-		ArrayList<ApplyDto> aList = ApplyController.getInstance().applyR();
+		ArrayList<ApplyDto> aList = ApplyController.getInstance().applyR(int loginNo);
 		
 		System.out.println("번호 \t 카테고리명");
 		System.out.println();
