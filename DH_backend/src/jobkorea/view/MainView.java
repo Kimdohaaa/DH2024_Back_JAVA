@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import jobkorea.controller.MainController;
 import jobkorea.model.dto.PostDto;
+import jobkorea.model.dto.ReviewDto;
 public class MainView {
 	// 싱글톤 s
 	// 생성자
@@ -53,7 +54,9 @@ public class MainView {
 			if(choose4 == 1) {
 				bestList();
 			}else if(choose4 == 2) {
-				
+				System.out.print(">> 후기를 볼 기업명 : ");
+				String ename = scan.next();
+				reviewList(ename);
 			}else if (choose4 ==3) {
 				run();
 			}
@@ -108,8 +111,9 @@ public class MainView {
 		MainController.getInstance().bestList(postDto);
 	}
     // [2] 후기 R
-    public void reviewList() {
-		
+    public void reviewList(String ename) {
+    	ReviewDto reviewDto = new ReviewDto();
+    	MainController.getInstance().reviewList(ename);;
 	}
 }
 
