@@ -67,7 +67,7 @@ public class MainDao {
     // [1] 우수기업 R
     public void bestList() {
     	try {
-    		String sql = "select e.ename , avg(r.rrating) as ravg from review r join enterprise e "
+    		String sql = "select e.ename , avg(r.rrating) as ravg from review r left join enterprise e "
     					+ "on  r.eno = e.eno group by r.eno order by ravg desc";
     		PreparedStatement ps = conn.prepareStatement(sql);
     		ResultSet rs = ps.executeQuery();
@@ -84,7 +84,23 @@ public class MainDao {
 		}
     }
     // [2] 후기 R
-    public void reviewList() {
-		
+    public void reviewList(String ename) {
+		try {
+			String sql = "select e.ename,  r.rcontent, r.rrating from review r join enterprise e "
+						+ "on r.eno = e.eno  where e.ename = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, ename);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String name = rs.getString("ename");
+				String rcontent = rs.getString("rcontent");
+				String rrating = rs.getString("rrating");
+				
+				System.out.println("기업명 : "+ name + "후기 : " + rcontent + "별점 : " + rrating);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }
