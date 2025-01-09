@@ -1,5 +1,9 @@
 package jobkorea.controller;
 
+import java.util.ArrayList;
+
+import jobkorea.model.dao.ApplyDao;
+import jobkorea.model.dto.ApplyDto;
 
 public class ApplyController {
 	// 싱글톤 s
@@ -18,8 +22,10 @@ public class ApplyController {
 			
 	}
 	// [2] 지원 현황 출력
-	public void applyR() {
-			
+	public ArrayList<ApplyDto> applyR(int loginNo) {
+		ArrayList<ApplyDto> result = ApplyDao.getInstance().applyR(int loginNo);
+		
+		return result;
 	}
 	// [3] 정보 수정 -> 비밀번호 / 이름 / 성별 / 생년월일 / 주소
 	public void applyU() {
