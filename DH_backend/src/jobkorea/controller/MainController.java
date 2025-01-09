@@ -56,8 +56,8 @@ public class MainController {
     	MainDao.getInstance().bestList();
 	}
     // [2] 후기 R
-    public void reviewList() {
-		
+    public void reviewList(String ename) {
+		MainDao.getInstance().reviewList(ename);
 	}
 }
 
