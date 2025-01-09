@@ -2,7 +2,12 @@ package jobkorea.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import jobkorea.model.dto.ApplyDto;
+
 import java.sql.DriverManager;
 import java.sql.DriverManager;
 import java.sql.DriverManager;
@@ -40,8 +45,17 @@ public class ApplyDao {
 			
 	}
 	// [2] 지원 현황 출력
-	public void applyR() {
+	public ArrayList<ApplyDto> applyR(int loginNo) {
+		ArrayList<ApplyDto> aList = new ArrayList<ApplyDto>();
+		
+		try {
+			String sql = "";
+			PreparedStatement ps = conn.prepareStatement(sql);
 			
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	// [3] 정보 수정 -> 비밀번호 / 이름 / 성별 / 생년월일 / 주소
 	public void applyU() {
