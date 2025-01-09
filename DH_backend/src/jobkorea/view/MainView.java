@@ -33,7 +33,7 @@ public class MainView {
 			if(choose2 == 1) {
 				mSignUp();
 			}else if(choose2 == 2) {
-				mLogin();
+				mLogin();	// 성공 시 지원 / 후기 View 연동
 			}
 			
 		}else if(choose == 2) {
@@ -44,7 +44,7 @@ public class MainView {
 			if(choose3 == 1) {
 				eSignUp();
 			}else if(choose3 == 2) {
-				 eLogin();
+				 eLogin();	// 성공 시 기업 View 연동
 			}
 			
 		}else if(choose == 3) {
