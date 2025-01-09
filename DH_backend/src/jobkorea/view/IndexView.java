@@ -12,13 +12,15 @@ public class IndexView {
 	
 	// 메인
 	public void index() {
-		System.out.println(">> 1. 지원관리 2. 후기관리");
+		System.out.println(">> 1. 지원관리 2. 후기관리 3. 로그아웃");
 		int choose = scan.nextInt();
 		
 		if(choose == 1) {
 			ApplyView.getInstance().apply();
 		}else if(choose == 2) {
 			
+		}else if (choose == 3) {
+			MainView.getInstance().eLogout();
 		}
 	}
 }
