@@ -1,6 +1,9 @@
 
 package jobkorea.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import jobkorea.model.dao.MainDao;
 import jobkorea.model.dto.PostDto;
 
@@ -53,12 +56,16 @@ public class MainController {
     
     
     // [1] 우수기업 R
-    public void bestList(PostDto postDto) {
-    	MainDao.getInstance().bestList();
-	}
+    public ArrayList<HashMap<String, String>> bestList() {
+    	ArrayList<HashMap<String, String>> result = MainDao.getInstance().bestList();
+	
+    	return result;
+    }
     // [2] 후기 R
-    public void reviewList(String ename) {
-		MainDao.getInstance().reviewList(ename);
+    public ArrayList<HashMap<String, String>> reviewList(String ename) {
+    	ArrayList<HashMap<String, String>> result = MainDao.getInstance().reviewList(ename);
+    	
+    	return result;
 	}
 }
 

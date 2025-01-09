@@ -1,5 +1,7 @@
 package jobkorea.view;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import jobkorea.controller.MainController;
@@ -29,17 +31,19 @@ public class MainView {
 
 			if(choose == 1) {
 			
-				System.out.println(">> 1. 일반회원가입 2. 일반로그인");
+				System.out.println(">> 1. 일반회원가입 2. 일반로그인 3. 메인페이지");
 				int choose2 = scan.nextInt();
 				
 				if(choose2 == 1) {
 					mSignUp();
 				}else if(choose2 == 2) {
 					mLogin();	// 성공 시 지원 / 후기 View 연동
+				}else if (choose2 == 3) {
+					
 				}
 				
 			}else if(choose == 2) {
-				System.out.println(">> 1. 기업회원가입 2. 기업 로그인");
+				System.out.println(">> 1. 기업회원가입 2. 기업 로그인 3. 메인페이지");
 				
 				int choose3 = scan.nextInt();
 				
@@ -47,6 +51,8 @@ public class MainView {
 					eSignUp();
 				}else if(choose3 == 2) {
 					 eLogin();	// 성공 시 기업 View 연동
+				}else if (choose3 == 3) {
+					
 				}
 			
 			}else if(choose == 3) {
@@ -109,14 +115,25 @@ public class MainView {
     
     // [1] 우수기업 R
     public void bestList() {
-		System.out.println("======= 우수기업리스트 =======");
-		PostDto postDto = new PostDto();
-		MainController.getInstance().bestList(postDto);
+    	ArrayList<HashMap<String , String>> bList = MainController.getInstance().bestList();
+    	
+    	System.out.println("======= 우수기업리스트 =======");
+    	System.out.println();
+    	for(int i = 0; i < bList.size() ; i++) {
+    		HashMap<String, String> bDto = bList.get(i);
+    		System.out.println(bDto);
+    	}
 	}
     // [2] 후기 R
     public void reviewList(String ename) {
-    	ReviewDto reviewDto = new ReviewDto();
-    	MainController.getInstance().reviewList(ename);;
+    	ArrayList<HashMap<String , String>> rList = MainController.getInstance().reviewList(ename);
+    	
+    	System.out.print(">> 기업명 : ");
+    	System.out.println();
+    	for(int i = 0; i < rList.size() ; i++) {
+    		HashMap<String, String> rDto = rList.get(i);
+    		System.out.println(rDto);
+    	}
 	}
 }
 

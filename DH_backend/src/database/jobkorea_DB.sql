@@ -89,7 +89,7 @@ create table apply(
    ano int unsigned auto_increment ,
     pno int unsigned ,
     mno int unsigned ,
-    apass boolean not null ,
+    apass boolean not null default false, ###
     constraint primary key ( ano ) ,
     constraint foreign key ( pno ) references post(pno) ,
     constraint foreign key ( mno ) references member(mno)
@@ -119,8 +119,13 @@ insert into review( rrating , rcontent , eno , mno ) values ( '4' , '돈을 많�
 insert into review( rrating , rcontent , eno , mno ) values ( '2' , '가지마세요.' , '1' , '2' );
 insert into review( rrating , rcontent , eno , mno ) values ( '2' , '비추합니다.' , '1' , '3' );
 insert into review( rrating , rcontent , eno , mno ) values ( '5' , '좋아요.' , '2' , '3' );
+
+
+-- ******* DML ******* --
 -- 우수 기업 리스트 sample --
 select e.ename , avg(r.rrating) as ravg from review r left join enterprise e on  r.eno = e.eno group by r.eno order by ravg desc;
 -- 기업별 후기 리스트 sample --
 select e.ename,  r.rcontent, r.rrating from review r join enterprise e on r.eno = e.eno  where e.ename = '(주)코비엔';  
+-- 지원리스트 출력 sample --
+select p.ptitle , p.pend , a.apass , a.ano from apply a join post p on a.pno = p.pno  where a.mno = '3' ; 
 

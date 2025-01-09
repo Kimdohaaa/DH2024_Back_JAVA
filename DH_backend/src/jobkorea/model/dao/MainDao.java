@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import jobkorea.controller.MainController;
 
@@ -66,7 +68,8 @@ public class MainDao {
     
     
     // [1] 우수기업 R
-    public void bestList() {
+    public ArrayList<HashMap<String, String>>  bestList() {
+    	ArrayList<HashMap<String, String>> bList = new ArrayList<>();
     	try {
     		String sql = "select e.ename , avg(r.rrating) as ravg from review r left join enterprise e "
     					+ "on  r.eno = e.eno group by r.eno order by ravg desc";
@@ -74,18 +77,25 @@ public class MainDao {
     		ResultSet rs = ps.executeQuery();
     		
     		while(rs.next()) {
-    			int i = 0;
     			String list = rs.getString("ename");
     			String rating = rs.getString("ravg");
-    			System.out.println(i +"위 기업명 : " + list + "평균별점 : " + rating + " 점");
-    			i++; // i++ 되게 하기 -> 우수기업리스트 테이블??? / 소수점 1자리 까지만 나오게 하기 //
+    			
+    			HashMap<String, String> map = new HashMap<String, String>();
+    			
+    			map.put("기업명", list);
+    			map.put("별점", rating);
+    			
+    			bList.add(map);
     		}
     	}catch (Exception e) {
     		System.out.println(e);
 		}
+    	
+    	return bList;
     }
     // [2] 후기 R
-    public void reviewList(String ename) {
+    public ArrayList<HashMap<String, String>>  reviewList(String ename) {
+    	ArrayList<HashMap<String, String>> rList = new ArrayList<>();
 		try {
 			String sql = "select e.ename,  r.rcontent, r.rrating from review r join enterprise e "
 						+ "on r.eno = e.eno  where e.ename = ?";
@@ -97,11 +107,19 @@ public class MainDao {
 				String name = rs.getString("ename");
 				String rcontent = rs.getString("rcontent");
 				String rrating = rs.getString("rrating");
+				HashMap<String, String> map = new HashMap<String, String>();
 				
-				System.out.println("기업명 : "+ name + "후기 : " + rcontent + "별점 : " + rrating);
+				map.put("기업명", name);
+				map.put("후기", rcontent);
+				map.put("별점", rrating);
+				
+				rList.add(map);
 			}
+			
 		}catch (SQLException e) {
 			System.out.println(e);
 		}
+		
+		return rList;
 	}
 }
