@@ -68,8 +68,4 @@ public class MemberDto {
 				+ ", mdate=" + mdate + ", maddr=" + maddr + "]";
 	}
 	
-	
-	
-	
-	
 }
