@@ -3,8 +3,10 @@ package jobkorea.model.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import jobkorea.model.dto.ApplyDto;
 
@@ -45,17 +47,36 @@ public class ApplyDao {
 			
 	}
 	// [2] 지원 현황 출력
-	public ArrayList<ApplyDto> applyR(int loginNo) {
-		ArrayList<ApplyDto> aList = new ArrayList<ApplyDto>();
+	public ArrayList<HashMap<String, String>> applyR(int loginNo) {
+		ArrayList<HashMap<String, String>> aList = new ArrayList<>();
 		
 		try {
-			String sql = "";
+			String sql = "select p.ptitle , p.pend , a.apass , a.ano from apply a join post p on a.pno = p.pno  where a.mno = ? ";
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, loginNo);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String ptitle = rs.getString("ptitle");
+				String pend = rs.getString("pend");
+				boolean apass = rs.getBoolean("apass");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("공고명", ptitle);
+				map.put("공고종료일", pend);
+				map.put("합격여부", apass + "");	// boolean 타입의 apass 를 map 에 넣기 위해 String 타입으로 변환함
+				
+				aList.add(map);
+			}
 			
 			
-		}catch (Exception e) {
-			// TODO: handle exception
+		}catch (SQLException e) {
+			System.out.println(e);
 		}
+		
+		return aList;
 	}
 	// [3] 정보 수정 -> 비밀번호 / 이름 / 성별 / 생년월일 / 주소
 	public void applyU() {
