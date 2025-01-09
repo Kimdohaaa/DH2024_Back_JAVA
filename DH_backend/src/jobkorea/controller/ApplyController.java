@@ -1,6 +1,7 @@
 package jobkorea.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import jobkorea.model.dao.ApplyDao;
 import jobkorea.model.dto.ApplyDto;
@@ -22,8 +23,8 @@ public class ApplyController {
 			
 	}
 	// [2] 지원 현황 출력
-	public ArrayList<ApplyDto> applyR(int loginNo) {
-		ArrayList<ApplyDto> result = ApplyDao.getInstance().applyR(int loginNo);
+	public ArrayList<HashMap<String, String>> applyR(int loginNo) {
+		ArrayList<HashMap<String, String>> result = ApplyDao.getInstance().applyR(loginNo);
 		
 		return result;
 	}
