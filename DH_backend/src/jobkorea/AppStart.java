@@ -1,10 +1,12 @@
 package jobkorea;
 
+import jobkorea.view.MainView;
+
 public class AppStart {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		MainView.getInstance().run();
 	}
 
+	
 }
