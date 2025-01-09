@@ -22,7 +22,7 @@ public class MemberView {
 	// 메인 메소드
 	public void run() {
 		while(true) {
-			System.out.println(">> 1. 회원가입  2. 로그인 3. 아이디 찾기 4. 비밀번호 찾기 5. 로그아웃");
+			System.out.println(">> 1. 회원가입  2. 로그인 3. 아이디 찾기 4. 비밀번호 찾기");
 			int choose = scan.nextInt();
 			
 			if(choose == 1) {
@@ -33,10 +33,9 @@ public class MemberView {
 				findId();
 			}else if(choose == 4) {
 				findPwd();
-			}else if(choose == 5) {
-				logout();
 			}
 		}
+			
 	}
 	// [1] 회원가입
 	public void signUp() {
@@ -153,6 +152,7 @@ public class MemberView {
 				
 			}else if(choose2 == 2) {
 				delete();
+				run();
 			}else if(choose2 == 3) {
 				break;
 			}
@@ -167,6 +167,8 @@ public class MemberView {
 			if(choose3 == 0) {
 				MemberController.getInstance().delete();
 				logout(); 	// 탈퇴 성공 시 로그아웃
+			}else if(choose3 == 1) {
+				BoardView.getInstance().index(); // 탈퇴를 하지 않을 시 BoardView 의 index() 메소드 연동
 			}
 	}
 }

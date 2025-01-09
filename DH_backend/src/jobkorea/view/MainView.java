@@ -58,7 +58,7 @@ public class MainView {
 				String ename = scan.next();
 				reviewList(ename);
 			}else if (choose4 ==3) {
-				run();
+				
 			}
 		}
 	}
@@ -77,7 +77,7 @@ public class MainView {
     	
     	if(result == 0) {
     		System.out.println(">> 로그아웃 성공");
-    		run();
+    	
     	}
     }
     
@@ -98,7 +98,7 @@ public class MainView {
        
        if(result == 0) {
     	   System.out.println(">> 로그아웃 성공");
-    	   run();
+    	  
        }
     }
     
