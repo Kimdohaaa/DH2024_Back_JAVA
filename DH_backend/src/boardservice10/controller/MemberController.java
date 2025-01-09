@@ -72,4 +72,15 @@ public class MemberController {
 	public void delete() {
 		MemberDao.getInstance().delete(loginMno);
 	}
+	
+	// [8] 회원정보 수정 
+		public boolean update(MemberDto memberDto) {
+			// 수정 대상 : 현재 로그인된 회원번호를 DTO 에 담아준다.
+			memberDto.setMno(loginMno);
+			
+			// DAO 에게 전달 / 반환 받기
+			boolean result = MemberDao.getInstance().update(memberDto);
+			
+			return result;
+		}
 }
