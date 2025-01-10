@@ -128,4 +128,11 @@ select e.ename , avg(r.rrating) as ravg from review r left join enterprise e on 
 select e.ename,  r.rcontent, r.rrating from review r join enterprise e on r.eno = e.eno  where e.ename = '(주)코비엔';  
 -- 지원리스트 출력 sample --
 select p.ptitle , p.pend , a.apass , a.ano from apply a join post p on a.pno = p.pno  where a.mno = '3' ; 
+-- 카테고리리스트 sample --
+select * from category;
+
+
+
+
+
 
