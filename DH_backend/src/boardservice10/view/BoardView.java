@@ -61,7 +61,7 @@ public class BoardView {
 		
 		System.out.println("제목 :" + boardDto.getbTitle());
 		System.out.println("내용 :" +boardDto.getbContent());
-		System.out.println(boardDto.getCno() + "\t" + boardDto.getMno() + "\t" + boardDto.getbView()+ "\t" + boardDto.getbDate());
+		System.out.println(boardDto.getCname() + "\t" + boardDto.getMid() + "\t" + boardDto.getbView()+ "\t" + boardDto.getbDate());
 		System.out.println();
 	}
 	// [3] 게시물 전체 조회
@@ -75,8 +75,8 @@ public class BoardView {
 		for(int index = 0; index < result.size() ; index++) {
 			BoardDto boardDto = result.get(index);
 			System.out.print(boardDto.getBno() + "\t");
-			System.out.print(boardDto.getCno() + "\t");
-			System.out.print(boardDto.getMno() + "\t");
+			System.out.print(boardDto.getCname() + "\t");
+			System.out.print(boardDto.getMid() + "\t");
 			System.out.print(boardDto.getbDate() + "\t");
 			System.out.print(boardDto.getbTitle() + "\n");
 		}
