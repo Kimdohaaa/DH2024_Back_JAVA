@@ -9,6 +9,9 @@ public class BoardDto {
 	private int mno;
 	private int cno;
 	
+	private String mid;
+	private String cname;
+	
 	public BoardDto() {}
 
 	public BoardDto(int bno, String bTitle, String bContent, int bView, String bDate, int mno, int cno) {
@@ -87,6 +90,22 @@ public class BoardDto {
 
 	public void setCno(int cno) {
 		this.cno = cno;
+	}
+
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 
 	@Override
