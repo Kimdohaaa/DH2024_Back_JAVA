@@ -1,5 +1,7 @@
 package day_24;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class StringExample {
@@ -61,9 +63,9 @@ public class StringExample {
 		char gender = "012345-1230123".charAt(7);
 		System.out.println(gender);
 			// 활용 : Scanner 클래스를 통해 입력받은 값을 char 타입으로 변환할 경우
-		Scanner scan = new Scanner(System.in);
-		char ch = scan.next().charAt(0);
-		
+			Scanner scan = new Scanner(System.in);
+			char ch = scan.next().charAt(0);
+			
 		// 6) length 메소드 : 문자열의 길이를 반환하는 함수
 		System.out.println("012345-1230123".length());
 		
@@ -71,14 +73,86 @@ public class StringExample {
 		String str8 = "자바프로그래밍".replace("자바", "java");
 		System.out.println(str8);
 			// 활용 : 서로 다른 언어들끼의 문법을 치환할 경우
-		String htmlData = "유재석<br/>안녕하세요";
-		System.out.println(htmlData); // 줄바꿈 처리 불가
-		String javaData = htmlData.replace("<br/>", "\n"); // 치환
+			String htmlData = "유재석<br/>안녕하세요";
+			System.out.println(htmlData); // 줄바꿈 처리 불가
+			String javaData = htmlData.replace("<br/>", "\n"); // 치환
 		// 문자열1개 + 문자열1개 = 문자열 1개 (연산자 / 함수는 무조건 하나의 결과만 도출한다.)
 		
+		// 8) subString 메소드 : 지정한 시작인덱스부터 끝인덱스 전까지의 문자열을 반환하는 함수
+		String str9 = "012345-1230123".substring(0,6); // 0번 인덱스 ~ 6번 인덱스 전까지 반환
+		System.out.println(str9);
+		String str10 = "012345-1230123".substring(7);  // 7번 인덱스 ~ 마지막인덱스까지 반환
+		
+		// 9) split 메소드 : 지정한 구분문자를 기준으로 문자열을 구분하여 배열로 반환 
+		String[] str11 = "012345-1230123".split("-");  // "-"을 기준으로 문자열을 구분하여 배열로 반환 
+		System.out.println(str11[0]);	// "012345" 출력
+		System.out.println(str11[1]);	// "1230123" 출력
+			// 활용 : CSV 형식의 파일을 사용하는 경우
+		
+		// 10) indexOf("찾을 문자열") 메소드 : 문자열 내 지정한 문자열이 존재하면 해당 문자열의 인덱스 , 존재하지 않으면 -1 을 반환하는 함수
+		int findIndex = "자바 프로그래밍 언어".indexOf("자바"); // 0 츌력
+			// 활용 : 문자열을 검색하는 경우
+		
+		// 11) contains("찾을 문자열") 메소드 : 문자열 내 지정한 문자열이 존재하면 true , 존재하지 않으면 false 를 반환하는 함수
+		boolean findBool = "자바 프로그램이 언어".contains("자바"); // true 출력
+			// 활용 : 문자열을 검색하는 경우
+		
+		// 12) getBytes 메소드 : 문자열들을 문자 바이트의 배열로 변환하는 함수
+		byte[] str12 = "JAVA PROGRAM".getBytes();
+		System.out.println(str12);
+		System.out.println(Arrays.toString(str12)); // 74,65,86,65,32,80,82,79,71,82,65,77 출력 -> 아스키 코드
+			// 영문,일부특수문자 : 문자 1개 당 1 바이트(아스키코드)
+		System.out.println("ab".getBytes().length);  // 2 출력 : 영문 2글자 -> 2 바이트	
+			// 한글 : 문자 1개 당 2 바이트 (유니코드)
+		System.out.println("가나".getBytes().length); // 6 출력 : 한글은 1글자당 2바이트지만 자바의 경우 UTF-8의 규칙정보가 포함되어 총 6바이트
+			// 활용 : 문자를 사용하는 인증코드를 만드는 경우
+			String code = "";
+			for(int index = 1; index <= 6 ; index++) {
+				
+				System.out.println(new Random());					// 난수 반환
+				System.out.println(new Random().nextInt());			// 정수타입의 난수 반환
+				System.out.println(new Random().nextInt(26));		// 0 ~ 25 사이의 난수 반환
+				System.out.println(new Random().nextInt(26) + 97);  // 97 ~ 122 사이의 난수 반환
+				System.out.println((char) new Random().nextInt(26) + 97); // 지정한 범위의 난수를 char 타입으로 변환
+				// new Random 클래스 : 난수 관련 기능을 제공하는 클래스
+				// new Random.nextInt() : 정수타입의 난수를 반환하는 함수
+				
+				code += (char)(new Random().nextInt(26) + 97);		
+				
+			}
+			System.out.println(code);	// 6자리의 임의의 난수 문자열 생성
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
