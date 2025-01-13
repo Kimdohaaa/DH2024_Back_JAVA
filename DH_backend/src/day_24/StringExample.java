@@ -1,5 +1,7 @@
 package day_24;
 
+import java.util.Scanner;
+
 public class StringExample {
 
 	public static void main(String[] args) {
@@ -40,13 +42,13 @@ public class StringExample {
 		String str5 = "자바".concat("프로그래밍");
 		System.out.println(str5);
 		
-		// 2) StringVuilder 클래스 	append 메소드
+		// 2) StringVuilder 클래스 / append 메소드
 		StringBuilder builder = new StringBuilder();
 		builder.append("자바");
 		builder.append("프로그래밍");
 		System.out.println(builder);
 		
-		// 3) format 메소드
+		// 3) format 메소드 : 형식 문자에 값이 대입된 문자열을 반환하는 함수
 		String.format("%s %s", "자바", "프로그래밍");
 		
 		// 4) += 연산자
@@ -55,7 +57,25 @@ public class StringExample {
 		str7 += "프로그래밍";
 		System.out.println(str7);
 		
+		// 5) charAt 메소드 : 문자열 내 인덱스번째 문자를 반환하는 함수
+		char gender = "012345-1230123".charAt(7);
+		System.out.println(gender);
+			// 활용 : Scanner 클래스를 통해 입력받은 값을 char 타입으로 변환할 경우
+		Scanner scan = new Scanner(System.in);
+		char ch = scan.next().charAt(0);
+		
+		// 6) length 메소드 : 문자열의 길이를 반환하는 함수
+		System.out.println("012345-1230123".length());
+		
+		// 7) replace 메소드 : 문자열을 치환하는 함수
+		String str8 = "자바프로그래밍".replace("자바", "java");
+		System.out.println(str8);
+			// 활용 : 서로 다른 언어들끼의 문법을 치환할 경우
+		String htmlData = "유재석<br/>안녕하세요";
+		System.out.println(htmlData); // 줄바꿈 처리 불가
+		String javaData = htmlData.replace("<br/>", "\n"); // 치환
 		// 문자열1개 + 문자열1개 = 문자열 1개 (연산자 / 함수는 무조건 하나의 결과만 도출한다.)
+		
 	}
 
 }
