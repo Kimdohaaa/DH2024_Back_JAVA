@@ -37,16 +37,17 @@ public class BoardController {
 	}
 	
 	// 게시물 수정
-	public boolean update(BoardDto boardDto, int bno) {
+	public boolean update(BoardDto boardDto) {
 		// 유효성 검사 현재 로그인된 작성자가 작성한 글인지 체크
 		int  loginMno = MemberController.getInstance().getLogInMno();
-		boolean check = BoardDao.getInstance().writeCheck(loginMno, bno);
+		int currentBno = boardDto.getBno();
+		boolean check = BoardDao.getInstance().writeCheck(currentBno, loginMno);
 		
 		if(check == false) {
 			return false;
 		}
 		
-		boolean result = BoardDao.getInstance().update(boardDto, bno);
+		boolean result = BoardDao.getInstance().update(boardDto);
 		
 		return result;
 	}
@@ -55,7 +56,7 @@ public class BoardController {
 	public boolean delete(int bno) {
 		// 유효성 검사 : 현재 로그인된 작성자가 작성한 글인지 체크
 		int loginMno = MemberController.getInstance().getLogInMno();
-		boolean check = BoardDao.getInstance().writeCheck(loginMno, bno);
+		boolean check = BoardDao.getInstance().writeCheck(bno, loginMno);
 		
 		if(check == false) {
 			return false;

@@ -118,10 +118,11 @@ public class BoardView {
 		String bContent = scan.next();
 		
 		BoardDto boardDto = new BoardDto();
+		boardDto.setBno(bno);
 		boardDto.setbTitle(bTitle);
 		boardDto.setbContent(bContent);
 		
-		boolean result = BoardController.getInstance().update(boardDto, bno);
+		boolean result = BoardController.getInstance().update(boardDto);
 		
 		if(result) {
 			System.out.println(">> 게시물 등록 성공");
@@ -136,6 +137,7 @@ public class BoardView {
 		boolean result = BoardController.getInstance().delete(bno);
 		
 		if(result) {
+			System.out.println(">> 삭제 성공");
 		}else {
 			System.out.println(">> 작성자가 다릅니다.");
 		}

@@ -98,13 +98,13 @@ public class BoardDao extends Dao {
 	}
 	
 	// 게시물 수정
-	public boolean update(BoardDto boardDto,int bno) {
+	public boolean update(BoardDto boardDto) {
 		try {
 			String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, boardDto.getbTitle());
 			ps.setString(2, boardDto.getbContent());
-			ps.setInt(3, bno);
+			ps.setInt(3, boardDto.getBno());
 			int count = ps.executeUpdate();
 			
 			if(count == 1) {
@@ -113,7 +113,7 @@ public class BoardDao extends Dao {
 		}catch (SQLException e) {
 			System.out.println(e);
 		}
-		return true;
+		return false;
 	}
 	
 	// 게시물 삭제
@@ -136,9 +136,9 @@ public class BoardDao extends Dao {
 	}
 	
 	// 내가 쓴 게시물인지 확인
-	public boolean writeCheck(int loginMno , int bno) {
+	public boolean writeCheck( int bno,int loginMno ) {
 		try {
-			String sql = "select * from where bno = ? and mno = ?";
+			String sql = "select * from board where bno = ? and mno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, bno);
 			ps.setInt(2, loginMno);
