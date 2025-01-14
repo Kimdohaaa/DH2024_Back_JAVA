@@ -38,7 +38,7 @@ public class BoardView {
 					return; // MemberView 의 delete 메소드 -> myInfo 메소드 -> 0 을 반환했을 때
 				}
 			}else if(choose == 3) {
-				
+				write();
 			}else if(choose == 4) {
 				findById();
 			}else if(choose == 5) {
@@ -47,11 +47,42 @@ public class BoardView {
 		}
 	}
 	
-	// [1] 게시물 쓰기
-	public void name() {
+	// 카테고리전체조회
+	public void categoryAll(){
+		ArrayList<BoardDto> result = BoardController.getInstance().categoryAll();
 		
+		for(int i = 0; i < result.size() ; i++) {
+			BoardDto boardDto = result.get(i);
+			System.out.printf("번호 : %d 카테고리명 : %s \n", boardDto.getCno(), boardDto.getCname());
+		}
 	}
-	// [2] 게시물 상세 보기
+	
+	// 게시물 쓰기
+	public void write() {
+		// 1) 카테고리 전체 조회
+		categoryAll();
+		// 2) 입력
+		System.out.print(">> 카테고리번호 : ");
+		int cno = scan.nextInt();
+		System.out.print(">> 제목 : ");
+		String bTitle = scan.next();
+		System.out.print(">> 내용 : ");
+		String bContent = scan.next();
+		
+		BoardDto boardDto = new BoardDto();
+		boardDto.setCno( cno);
+		boardDto.setbTitle(bTitle);
+		boardDto.setbContent(bContent);
+		
+		boolean result = BoardController.getInstance().write(boardDto);
+		
+		if(result) {
+			System.out.println(">> 게시물 작성 완료");
+		}else {
+			System.out.println(">> 게시물 작성 실패");
+		}
+	}
+	// 게시물 상세 보기
 	public void findById() {
 		System.out.print(">> 게시물 번호 : ");
 		int bno = scan.nextInt();
@@ -64,7 +95,7 @@ public class BoardView {
 		System.out.println(boardDto.getCname() + "\t" + boardDto.getMid() + "\t" + boardDto.getbView()+ "\t" + boardDto.getbDate());
 		System.out.println();
 	}
-	// [3] 게시물 전체 조회
+	// 게시물 전체 조회
 	public void findAll() {
 		// 게시물 전체 출력을 위해 ArrayList 사용
 		ArrayList<BoardDto> result = BoardController.getInstance().findAll();
