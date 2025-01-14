@@ -37,7 +37,7 @@ public class MemberView {
 		}
 			
 	}
-	// [1] 회원가입
+	// 회원가입
 	public void signUp() {
 		System.out.print(">> 아이디 : ");
 		String mid = scan.next();
@@ -50,16 +50,27 @@ public class MemberView {
 		
 		MemberDto memberDto = new MemberDto(mid, mpwd , mname, mphone);
 		
-		boolean result = MemberController.getInstance().signUp(memberDto);
-				
-		if(result == true) {
+		int result = MemberController.getInstance().signUp(memberDto);
+		
+		if(result == 1) {
+			System.out.println(">> 아이디 길이를 5 ~ 30 으로 작성해주세요.");
+		}else if(result == 2){
+			System.out.println(">> 해당 정보가 이미 존재합니다.");
+		}else if(result == 3) {
+			System.out.println(">> 비밀번호 길이를 5 ~ 30 으로 작성해주세요.");
+		}else if(result == 4) {
+			System.out.println(">> 이름 길이를 3 ~ 20 으로 작성해주세요.");
+		}else if(result == 5) {
+			System.out.println(">> 연락처를 010-0000-0000 형식으로 작성해주세요.");
+		}else if(result == 6) {
 			System.out.println(">> 회원가입 성공");
-		}else {
+		}else if(result == 7) {
 			System.out.println(">> 회원가입 실패");
 		}
+		
 	}
 	
-	// [2] 로그인
+	// 로그인
 	public void login() {
 		System.out.print(">> 아이디 : ");
 		String mid = scan.next();
@@ -81,7 +92,7 @@ public class MemberView {
 
 	}
 	
-	// [3] 아이디 찾기
+	// 아이디 찾기
 	public void findId() {
 		// 1) 입력
 		System.out.print(">> 이름 : ");
@@ -104,7 +115,7 @@ public class MemberView {
 			System.out.println(">> 동일한 회원정보가 없습니다.");
 		}
 	}
-	// [4] 비밀번호 찾기
+	// 비밀번호 찾기
 	public void findPwd() {
 		// 1) 입력
 		System.out.print(">> 아이디 : ");
@@ -128,13 +139,13 @@ public class MemberView {
 		}
 	}
 	
-	// [5] 로그아웃 (수업에서만 !!!)
+	// 로그아웃 (수업에서만 !!!)
 	public void logout() {
 		MemberController.getInstance().logout();
 		System.out.println(">> 로그아웃 성공");
 	}
 	
-	// [6] 내정보
+	// 내정보
 	public int myInfo() {
 		MemberDto result = MemberController.getInstance().myInfo();
 		
@@ -165,7 +176,7 @@ public class MemberView {
 		return 1; // 회원 유지
 	}
 		
-	// [7] 회원 탈퇴
+	// 회원 탈퇴
 	public int delete() {
 			System.out.println(">> 정말 회원 탈퇴를 하시나요? 0. 예 1. 아니요");
 			int choose3 = scan.nextInt();
@@ -178,7 +189,7 @@ public class MemberView {
 			return 1;	// 1 -> 탈퇴하지 않은 상태로 설계 (기록을 남기기 위해)
 	}
 	
-	// [8] 회원정보 수정 
+	// 회원정보 수정 
 	public void update() {
 		System.out.print(">> 새로운 비밀번호 : ");
 		String mpwd = scan.next();
