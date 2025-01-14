@@ -9,7 +9,6 @@ create table member(
     mid varchar(30) not null unique,
     mpwd varchar(30) not null,
     mname varchar(20) not null,
-    
     mphone varchar(13) not null unique,
     mdate datetime default now(),
     constraint primary key(mno)
@@ -89,7 +88,20 @@ select * from reply;
 select mid from member where mname = '유재석' and mphone = '010-3333-3333';
 -- Java test (비밀번호 찾기) --
 select mpwd from member where mid = 'qwe123' and mphone = '010-3333-3333';
-
-
+-- Java test (로그인) --
+select mno from member where mid = 'qwe123' and mpwd = 'a123456';
+-- Java test (내정보) --
+select * from member where mno = '1';
+-- Java test (회원탈퇴) --
+delete from member where mno = '1';
+-- Java test (회원수정) --
+update member set  mpwd = '4', mname = 'dd' , mphone = 'gg' where mno = '1';
+-- Java test (전체 게시물 조회) --
+-- 조회 시 작성자 번호 대신 작성자 아이디 출력 / 카테고리 번호 대신 카테고리명 출력
+select c.cname 카테고리명, b.btitle, b.bcontent , b.bdate , m.mname 작성자 
+	from board b inner join category c on b.cno = c.cno 
+    inner join member m on b.mno = m.mno ;
+-- Java test (특정 게시물 조회) --
+select * from board where bno = '4';
 
 
