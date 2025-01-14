@@ -40,6 +40,11 @@ public class BoardController {
 	public boolean update(BoardDto boardDto, int bno) {
 		// 유효성 검사 현재 로그인된 작성자가 작성한 글인지 체크
 		int  loginMno = MemberController.getInstance().getLogInMno();
+		boolean check = BoardDao.getInstance().writeCheck(loginMno, bno);
+		
+		if(check == false) {
+			return false;
+		}
 		
 		boolean result = BoardDao.getInstance().update(boardDto, bno);
 		
@@ -48,6 +53,14 @@ public class BoardController {
 	
 	// 게시물 삭제
 	public boolean delete(int bno) {
+		// 유효성 검사 : 현재 로그인된 작성자가 작성한 글인지 체크
+		int loginMno = MemberController.getInstance().getLogInMno();
+		boolean check = BoardDao.getInstance().writeCheck(loginMno, bno);
+		
+		if(check == false) {
+			return false;
+		}
+		
 		boolean result = BoardDao.getInstance().delete(bno);
 		
 		return result;

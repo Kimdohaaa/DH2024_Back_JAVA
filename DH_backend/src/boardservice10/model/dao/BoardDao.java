@@ -134,6 +134,26 @@ public class BoardDao extends Dao {
 		
 		return false;
 	}
+	
+	// 내가 쓴 게시물인지 확인
+	public boolean writeCheck(int loginMno , int bno) {
+		try {
+			String sql = "select * from where bno = ? and mno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			ps.setInt(2, loginMno);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return false;
+	}
+	
 	// 게시물 전체 조회
 	public ArrayList<BoardDto> findAll() {
 		// findAll() 메소드 밖에 생성 시 멤버변수로 계속 싱글톤에 남음

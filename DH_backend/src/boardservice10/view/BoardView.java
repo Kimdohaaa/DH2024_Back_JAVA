@@ -123,10 +123,10 @@ public class BoardView {
 		
 		boolean result = BoardController.getInstance().update(boardDto, bno);
 		
-		if(result ) {
-			System.out.println(">> 게시물 등록 실패");
-		}else if(result){
+		if(result) {
 			System.out.println(">> 게시물 등록 성공");
+		}else {
+			System.out.println(">> 작성자가 다릅니다.");
 		}
 		
 	}
@@ -136,9 +136,8 @@ public class BoardView {
 		boolean result = BoardController.getInstance().delete(bno);
 		
 		if(result) {
-			System.out.println(">> 게시물 삭제 성공");
 		}else {
-			System.out.println(">> 게시물 삭제 실패");
+			System.out.println(">> 작성자가 다릅니다.");
 		}
 	}
 	// 게시물 전체 조회
