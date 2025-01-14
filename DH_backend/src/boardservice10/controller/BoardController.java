@@ -35,6 +35,21 @@ public class BoardController {
 		
 		return boardDto;
 	}
+	
+	// 게시물 수정
+	public int update(BoardDto boardDto, int bno) {
+		
+		int result = BoardDao.getInstance().update(boardDto, bno);
+		
+		return result;
+	}
+	
+	// 게시물 삭제
+	public boolean delete(int bno) {
+		boolean result = BoardDao.getInstance().delete(bno);
+		
+		return result;
+	}
 	// 게시물 전체 조회
 	public ArrayList<BoardDto> findAll() {
 		ArrayList<BoardDto> result = BoardDao.getInstance().findAll();

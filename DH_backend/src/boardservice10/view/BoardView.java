@@ -94,6 +94,52 @@ public class BoardView {
 		System.out.println("내용 :" +boardDto.getbContent());
 		System.out.println(boardDto.getCname() + "\t" + boardDto.getMid() + "\t" + boardDto.getbView()+ "\t" + boardDto.getbDate());
 		System.out.println();
+		
+		while(true) {
+			System.out.println(">> 1. 뒤로가기 2. 댓글작성 3. 수정 4. 삭제");
+			int choose = scan.nextInt();
+			if(choose == 1) {
+				break;
+			}else if(choose == 2) {
+				
+			}else if(choose == 3) {
+				update(boardDto.getBno());
+			}else if(choose == 4) {
+				delete(boardDto.getBno());
+			}
+		}
+	}
+	
+	// 게시물 수정
+	public void update(int bno) {
+		System.out.print(">> 수정할 제목 : ");
+		String bTitle = scan.next();
+		System.out.print(">> 수정할 내용 : ");
+		String bContent = scan.next();
+		
+		BoardDto boardDto = new BoardDto();
+		boardDto.setbTitle(bTitle);
+		boardDto.setbContent(bContent);
+		
+		boolean result = BoardController.getInstance().update(boardDto, bno);
+		
+		if(result ) {
+			System.out.println(">> 게시물 등록 실패");
+		}else if(result){
+			System.out.println(">> 게시물 등록 성공");
+		}
+		
+	}
+	
+	// 게시물 삭제
+	public void delete(int bno) {
+		boolean result = BoardController.getInstance().delete(bno);
+		
+		if(result) {
+			System.out.println(">> 게시물 삭제 성공");
+		}else {
+			System.out.println(">> 게시물 삭제 실패");
+		}
 	}
 	// 게시물 전체 조회
 	public void findAll() {

@@ -9,8 +9,7 @@ create table member(
     mpwd varchar(20) not null,
     mname varchar(30) not null,
     mgender boolean default false,
-    mdate varchar(30
-    ) not null,
+    mdate varchar(30) not null,
     maddr varchar(100) not null,
     constraint primary key(mno)
 );
@@ -56,9 +55,9 @@ insert into category (cname) values ('개발');
 
 # 공고관리
 create table post(
-   pno int unsigned auto_increment,
+    pno int unsigned auto_increment,
     ptitle varchar(100) not null,
-   pcontent text not null,
+    pcontent text not null,
     phistory varchar(20) not null,
     pcount  varchar(20) not null,
     psalary varchar(20) not null,
@@ -87,10 +86,10 @@ insert into post (ptitle,pcontent, phistory, pcount,psalary, pend, cno , eno)
 
 # 지원관리
 create table apply(
-   ano int unsigned auto_increment ,
+    ano int unsigned auto_increment ,
     pno int unsigned ,
     mno int unsigned ,
-    apass boolean not null default false, ### default false 추가 ###
+    apass boolean not null default false, 
     constraint primary key ( ano ) ,
     constraint foreign key ( pno ) references post(pno) ,
     constraint foreign key ( mno ) references member(mno)
@@ -110,11 +109,12 @@ create table review(
    rno int unsigned auto_increment ,
    rcontent varchar(255) not null ,
    rrating int unsigned not null ,
-    rdate datetime default now() ,
-    constraint primary key ( rno ) ,
+   rdate datetime default now() ,
+   constraint primary key ( rno ) ,
    constraint foreign key ( eno ) references enterprise ( eno ),
    constraint foreign key ( mno ) references member ( mno )
 ); # table end
+
 insert into review( rrating , rcontent , eno , mno ) values ( '5' , '밥이 맛있어요.' , '6' , '5' );
 insert into review( rrating , rcontent , eno , mno ) values ( '4' , '돈을 많이 줘요.' , '2' , '4' );
 insert into review( rrating , rcontent , eno , mno ) values ( '2' , '가지마세요.' , '1' , '2' );
@@ -141,7 +141,22 @@ delete from apply where ano = 1;
 -- 지원 수정 sample --
 update member set mpwd = '얍' , mname = '얍', mgender = true , mdate = '얍' , maddr = '얍' where mno = 1;
 select * from member;
+-- 공고리스트 전체 출력 sample --
+select p.pno , p.ptitle, p.pcontent , p.phistory, p.pcount , p.psalary, p.pstart, p.pend , c.cname , e.ename 
+	from post p join category c on p.cno = c.cno join enterprise e on p.eno = e.eno
+		where p.eno = '5';
 
 
+insert into apply(pno, mno) select 1, 1 from category where cno = 1;
+select * from apply;
+-- 후기등록 sample--
+insert into review (rcontent,rrating, mno) values ('얍',1, 1) ;
+select * from review;
 
+-- 합격 리스트 sample --
+select a.ano , p.ptitle , e.ename  from apply as a join post as p on a.pno = p.pno join member as m on a.mno = m.mno join enterprise e on p.eno = e.eno 
+	where a.apass = true and a.mno = 3;
 
+-- 후기 리스트 sample --
+select r.rno, e.ename ,  r.rcontent , r.rrating , r.rdate from review r join enterprise e on r.eno = e.eno join member m on r.mno = m.mno 
+	where r.mno = 3;

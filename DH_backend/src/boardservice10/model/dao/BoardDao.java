@@ -96,6 +96,44 @@ public class BoardDao extends Dao {
 			return null;
 			
 	}
+	
+	// 게시물 수정
+	public int update(BoardDto boardDto,int bno) {
+		try {
+			String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, boardDto.getbTitle());
+			ps.setString(2, boardDto.getbContent());
+			ps.setInt(3, bno);
+			int count = ps.executeUpdate();
+			
+			if(count == 1) {
+				return 1;
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	// 게시물 삭제
+	public boolean delete(int bno) {
+		try {
+			String sql = "delete from board where bno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			
+			int count = ps.executeUpdate();
+			
+			if(count == 1) {
+				return true;
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return false;
+	}
 	// 게시물 전체 조회
 	public ArrayList<BoardDto> findAll() {
 		// findAll() 메소드 밖에 생성 시 멤버변수로 계속 싱글톤에 남음
