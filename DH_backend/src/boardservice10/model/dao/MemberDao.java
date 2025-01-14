@@ -194,7 +194,43 @@ public class MemberDao extends Dao {
 		
 		return false;
 	}
+	
+	// [9] 특정한 속성의 중복 검사
+		// field : 중복을 검사할 데이터의 속성명
+		// value : 중복을 검사할 데이터
+	public boolean check(String field, String value) {
+		try {
+			/*
+			// DB 에 명령어 전달 방법_[1]
+			StringBuilder builder = new StringBuilder();
+			builder.append(" select * from member where ");
+			builder.append(field);
+			builder.append(" = ");
+			builder.append("'"+value+"'");
+			*/
+			
+			// DB 에 명령어 전달 방법_[2]
+			String sql = "select * from member where "+field+" = ?";
+				// 속성명도 매개변수를 통하여 DB 에게 전달 가능 (속성명의 경우 타입이 들어가기 때문에 와일드카드보다는 직접 대입하기)
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, value);
+
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				return true;
+			}
+			
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return false;
+	}
 }
+
+
 
 
 
