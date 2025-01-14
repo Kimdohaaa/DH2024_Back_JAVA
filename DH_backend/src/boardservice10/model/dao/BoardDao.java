@@ -21,11 +21,53 @@ public class BoardDao extends Dao {
 	
 	ArrayList<BoardDto> boardList = new ArrayList<BoardDto>();
 	
-	// [1] 게시물 쓰기
-	public void name() {
+	
+	
+	// 카테고리전체조회
+	public ArrayList<BoardDto> categoryAll(){
+		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
+		try {
+			String sql = "select * from category";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
 			
+			while(rs.next()) {
+				BoardDto boardDto = new BoardDto();
+				boardDto.setCno(rs.getInt("cno"));
+				boardDto.setCname(rs.getString("cname"));
+				
+				list.add(boardDto);
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}	
+		
+		return list;
 	}
-	// [2] 게시물 상세 보기
+	
+	// 게시물 쓰기
+	public boolean write(BoardDto boardDto) {
+		try {
+			String sql = "insert into board(btitle , bcontent, cno , mno) values ( ? , ? , ? , ? )";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, boardDto.getbTitle());
+			ps.setString(2, boardDto.getbContent());
+			ps.setInt(3, boardDto.getCno());
+			ps.setInt(4, boardDto.getMno());
+			
+			int count = ps.executeUpdate();
+			
+			if(count == 1) {
+				return true;
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return false;
+		
+	}
+	// 게시물 상세 보기
 	public BoardDto findById(int bno) {
 		try {
 			String sql = "select b.* , c.cname , m.mid "
@@ -54,7 +96,7 @@ public class BoardDao extends Dao {
 			return null;
 			
 	}
-	// [3] 게시물 전체 조회
+	// 게시물 전체 조회
 	public ArrayList<BoardDto> findAll() {
 		// findAll() 메소드 밖에 생성 시 멤버변수로 계속 싱글톤에 남음
 		// while 문 안에 생성 시 while 문 종료 시 같이 종료됨
