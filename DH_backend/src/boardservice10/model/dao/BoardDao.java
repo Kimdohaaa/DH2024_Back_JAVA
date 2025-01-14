@@ -98,7 +98,7 @@ public class BoardDao extends Dao {
 	}
 	
 	// 게시물 수정
-	public int update(BoardDto boardDto,int bno) {
+	public boolean update(BoardDto boardDto,int bno) {
 		try {
 			String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -108,12 +108,12 @@ public class BoardDao extends Dao {
 			int count = ps.executeUpdate();
 			
 			if(count == 1) {
-				return 1;
+				return true;
 			}
 		}catch (SQLException e) {
 			System.out.println(e);
 		}
-		return 0;
+		return true;
 	}
 	
 	// 게시물 삭제

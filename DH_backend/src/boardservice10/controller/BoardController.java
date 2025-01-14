@@ -37,9 +37,11 @@ public class BoardController {
 	}
 	
 	// 게시물 수정
-	public int update(BoardDto boardDto, int bno) {
+	public boolean update(BoardDto boardDto, int bno) {
+		// 유효성 검사 현재 로그인된 작성자가 작성한 글인지 체크
+		int  loginMno = MemberController.getInstance().getLogInMno();
 		
-		int result = BoardDao.getInstance().update(boardDto, bno);
+		boolean result = BoardDao.getInstance().update(boardDto, bno);
 		
 		return result;
 	}
